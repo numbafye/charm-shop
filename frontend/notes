@@ -1,0 +1,47 @@
+<!-- HTML -->
+<div id="subscribe-overlay" class="overlay">
+  <div class="overlay-content">
+    <span class="close" id="close-overlay">&times;</span> <br />
+    <img
+      class="sub-img"
+      src="..\assets\newsletter cover.webp"
+      alt="subscribe-img"
+    />
+    <h2>Subscribe to Our Newsletter</h2>
+    <form id="subscribe-form">
+      <input type="email" placeholder="Enter your email" />
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+<div class="wrapper">
+  <!-- HAMBURGER MENU -->
+
+  <div class="navbar-container">
+    <div class="hamburger-container">
+      <div class="hamburger-icon" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <div class="cart-container">
+        <box-icon class="cart" type="solid" name="shopping-bag"></box-icon>
+        <span id="cart-counter">100</span>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <navbar class="navbar">
+      <ul class="menu-items" id="menu">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">SHOP</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><a href="#">FAQS</a></li>
+        <li><a href="#">GALLERY</a></li>
+      </ul>
+    </navbar>
+  </div>
+  <!-- CSS -->
+</div>
