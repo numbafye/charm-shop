@@ -1,33 +1,51 @@
+import Cart from "../../pages/Cart";
 import Hamburger from "./Hamburger";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [isCartVisible, setIsCartVisible] = useState(false);
+
+  const toggleCart = () => {
+    setIsCartVisible(!isCartVisible);
+  };
   return (
     <>
-        <div className="navbar-container">
-    <div className="hamburger-container">
-      <div className="hamburger-icon" id="hamburger">
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </div>
-      <div className="cart-container">
-        <box-icon className="cart" type="solid" name="shopping-bag"></box-icon>
+      <div className="navbar-container">
+        <div className="hamburger-container">
+          <div className="hamburger-icon" id="hamburger">
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+        </div>
+        <div>
+        <box-icon className="cart" type="solid" name="shopping-bag" onClick={toggleCart}></box-icon>
         <span id="cart-counter">100</span>
-      </div>
-    </div>
+          {isCartVisible && <Cart />}{" "}
+          {/* Render the Cart component if isCartVisible is true */}
+        </div>
 
-    <navbar className="navbar">
-      <ul className="menu-items" id="menu">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">SHOP</a></li>
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#">CONTACT</a></li>
-        <li><a href="#">FAQS</a></li>
-        <li><a href="#">GALLERY</a></li>
-      </ul>
-    </navbar>
-  </div>
+        <div className="navbar">
+          <ul className="menu-items" id="menu">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/products">Shop</Link>
+            </li>
+            <li>
+              <Link to="/">About</Link>
+            </li>
+            <li>
+              <Link to="/">Contact</Link>
+            </li>
+            <li>
+              <Link to="/">FAQs</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <div className="hamburger">
         <Hamburger />

@@ -27,9 +27,9 @@ input {
 img {
   display: block;
 }
-
+/* !OVERLAY */
 .overlay {
-  display: none;
+  /* display: none; */
   position: fixed;
   top: 0;
   left: 0;
@@ -113,30 +113,42 @@ img {
     opacity: 100%;
   }
 }
+/* !HAMBURGER */
 .navbar-container {
   max-width: 100%;
   border-bottom: 0.5px salmon solid;
 }
-.navbar-container .hamburger-container {
+
+.hamburger-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-.navbar-container .hamburger-icon {
+
+@media (min-width: 768px) {
+  .hamburger-container {
+    /* move container over to the right, 
+    see if you can flex both this and navbar menu items */
+  }
+}
+
+.hamburger-icon {
   width: 30px;
   height: 30px;
   position: relative;
   margin: 0.1em 1em 0 1em;
   cursor: pointer;
 }
+
 @media (min-width: 768px) {
-  .navbar-container .hamburger-icon {
+  .hamburger-icon {
     height: 1em;
     display: none;
   }
 }
-.navbar-container .hamburger-icon .bar {
+
+.hamburger-icon .bar {
   display: block;
   height: 3px;
   background-color: pink;
@@ -144,35 +156,40 @@ img {
   transition: transform 0.3s ease;
   animation: Opa 0.3s ease;
 }
-.navbar-container .hamburger-icon.open {
+
+.hamburger-icon.open {
   animation: rotateX 0.3s ease;
 }
-.navbar-container .hamburger-icon.open .bar {
+
+.hamburger-icon.open .bar {
   display: block;
 }
-.navbar-container .hamburger-icon.open .bar:nth-child(1) {
+
+.hamburger-icon.open .bar:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
-.navbar-container .hamburger-icon.open .bar:nth-child(2) {
+
+.hamburger-icon.open .bar:nth-child(2) {
   opacity: 0;
 }
-.navbar-container .hamburger-icon.open .bar:nth-child(3) {
+
+.hamburger-icon.open .bar:nth-child(3) {
   transform: rotate(45deg) translate(-5px, -6px);
 }
-.navbar-container .cart-container {
+
+/* !CART */
+/* .cart-container {
+  border: 1px black solid;
   position: relative;
   top: 3px;
   right: 20px;
 }
-.navbar-container .cart-container .cart {
+
+.cart-container .cart {
   margin-right: 8px;
 }
-@media (min-width: 768px) {
-  .navbar-container .cart-container .cart {
-    display: none;
-  }
-}
-.navbar-container .cart-container #cart-counter {
+
+.cart-container #cart-counter {
   min-width: 28px;
   padding: 0 4px;
   height: 27px;
@@ -188,14 +205,16 @@ img {
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  .navbar-container .cart-container #cart-counter {
-    display: none;
+  .cart-container #cart-counter {
   }
-}
-.navbar-container .navbar {
+} */
+
+/* !NAVBAR */
+.navbar {
   width: 100%;
 }
-.navbar-container .menu-items {
+
+.menu-items {
   display: none;
 }
 @media (min-width: 768px) {
@@ -206,7 +225,8 @@ img {
     gap: 70px;
   }
 }
-.navbar-container .menu-items a {
+
+.menu-items a {
   color: black;
 }
 
