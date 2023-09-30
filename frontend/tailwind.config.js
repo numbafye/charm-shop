@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./pages/**/*.{html,js,jsx}", "./components/**/*.{html,js,jsx}"],
+  content: [
+    "./src/**/*.{html,js,jsx}",
+    "./pages/**/*.{html,js,jsx}",
+    "./components/**/*.{html,js,jsx}",
+    "./index.html",
+  ],
   theme: {
     screens: {
       sm: { min: "320px", max: "767px" },
@@ -9,10 +14,10 @@ export default {
       xl: "1440px",
     },
     colors: {
-      "primary-color": "#1fb6ff",
-      "secondary-color": "#7e5bef",
-      "accent-color": "#ff49db",
-      "text-color": "#ff7849",
+      primary: "#1fb6ff",
+      secondary: "#7e5bef",
+      accent: "#ff49db",
+      text: "#ff7849",
     },
     extend: {},
   },

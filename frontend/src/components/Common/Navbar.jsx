@@ -20,8 +20,13 @@ function Navbar() {
           </div>
         </div>
         <div>
-        <box-icon className="cart" type="solid" name="shopping-bag" onClick={toggleCart}></box-icon>
-        <span id="cart-counter">100</span>
+          <box-icon
+            className="cart"
+            type="solid"
+            name="shopping-bag"
+            onClick={toggleCart}
+          ></box-icon>
+          <span id="cart-counter">100</span>
           {isCartVisible && <Cart />}{" "}
           {/* Render the Cart component if isCartVisible is true */}
         </div>
