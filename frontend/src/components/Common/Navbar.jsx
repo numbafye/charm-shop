@@ -50,7 +50,7 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className=" mr-3">
           <box-icon
             className="cart"
             type="solid"
