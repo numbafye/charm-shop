@@ -1,34 +1,34 @@
-import Cart from "../../pages/Cart";
-import Hamburger from "./Hamburger";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import MenuItems from './MenuItems'; // Import your MenuItems component
+import Cart from '../../pages/Cart';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isCartVisible, setIsCartVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleCart = () => {
     setIsCartVisible(!isCartVisible);
   };
+
+  const handleHamburgerClick = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <>
-      <div className="navbar-container">
+      <div className="navbar-container flex z-50">
         <div className="hamburger-container">
-          <div className="hamburger-icon" id="hamburger">
+          <div
+            className={`hamburger-icon ${menuOpen ? 'open' : ''}`}
+            id="hamburger"
+            onClick={handleHamburgerClick}
+          >
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>
           </div>
-        </div>
-        <div>
-          <box-icon
-            className="cart"
-            type="solid"
-            name="shopping-bag"
-            onClick={toggleCart}
-          ></box-icon>
-          <span id="cart-counter">100</span>
-          {isCartVisible && <Cart />}{" "}
-          {/* Render the Cart component if isCartVisible is true */}
+          {menuOpen && <MenuItems closeMenu={() => setMenuOpen(false)} />}
         </div>
 
         <div className="navbar">
@@ -50,10 +50,16 @@ function Navbar() {
             </li>
           </ul>
         </div>
-      </div>
-
-      <div className="hamburger">
-        <Hamburger />
+        <div>
+          <box-icon
+            className="cart"
+            type="solid"
+            name="shopping-bag"
+            onClick={toggleCart}
+          ></box-icon>
+          <span id="cart-counter">100</span>
+          {isCartVisible && <Cart />}
+        </div>
       </div>
     </>
   );

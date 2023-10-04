@@ -7,7 +7,6 @@ function Home() {
   return (
     <>
       <Overlay />
-      <h1>Home</h1>
       <Navbar />
       <Header />
       <Footer />

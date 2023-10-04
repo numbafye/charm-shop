@@ -4,19 +4,19 @@
  * This injects Tailwind's base styles and any base styles registered by
  * plugins.
  */
- @tailwind base;
+@tailwind base;
 
- /**
+/**
   * This injects Tailwind's component classes and any component classes
   * registered by plugins.
   */
- @tailwind components;
- 
- /**
+@tailwind components;
+
+/**
   * This injects Tailwind's utility classes and any utility classes registered
   * by plugins.
   */
- @tailwind utilities;
+@tailwind utilities;
 
 * {
   box-sizing: border-box;
@@ -46,6 +46,16 @@ input {
 img {
   display: block;
 }
+
+.Shop {
+  position: relative;
+  bottom: 4em;
+}
+
+.flip-horizontal {
+  transform: scaleX(-1);
+}
+
 /* !OVERLAY */
 .overlay {
   display: none; /*? TURNS OFF OVERLAY */
@@ -136,6 +146,7 @@ img {
 .navbar-container {
   max-width: 100%;
   border-bottom: 0.5px salmon solid;
+  margin-top: 1em;
 }
 
 .hamburger-container {
@@ -143,13 +154,6 @@ img {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-}
-
-@media (min-width: 768px) {
-  .hamburger-container {
-    /* move container over to the right, 
-    see if you can flex both this and navbar menu items */
-  }
 }
 
 .hamburger-icon {
@@ -197,36 +201,50 @@ img {
 }
 
 /* !CART */
-/* .cart-container {
-  border: 1px black solid;
-  position: relative;
-  top: 3px;
-  right: 20px;
+.cart-container {
+  position: absolute;
+  right: 0px;
+  top: 60px;
+  z-index: 999;
+  background-color: white;
+  width: 50%;
+  height: 100%;
+  animation: slideFromRight 0.5s ease-in-out;
+  overflow: scroll;
+}
+
+@media (min-width: 768px) {
+  .cart-container {
+    width: 30%;
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .cart-container .cart {
   margin-right: 8px;
+  z-index: 991;
 }
 
-.cart-container #cart-counter {
+#cart-counter {
   min-width: 28px;
-  padding: 0 4px;
+  padding: 0 10px;
   height: 27px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: hotpink;
-  position: absolute;
-  top: 70%;
-  right: 0;
-  transform: translate(50%, -50%);
+  transform: translate(10%, -50%);
   font-size: 14px;
 }
-@media (min-width: 768px) {
-  .cart-container #cart-counter {
-  }
-} */
 
 /* !NAVBAR */
 .navbar {
@@ -236,6 +254,7 @@ img {
 .menu-items {
   display: none;
 }
+
 @media (min-width: 768px) {
   .navbar-container .menu-items {
     display: flex;
@@ -251,22 +270,20 @@ img {
 
 .show-menu {
   display: flex;
+  background-color: white;
   flex-direction: column;
   padding-left: 5px;
-  gap: 10px;
-  margin-top: 1em;
-  max-width: 100%;
+  gap: 12px;
+  margin-top: 2em;
+  padding-inline: 5em;
+width: 50%;
   z-index: 999;
   animation: Opa 0.5s ease;
   position: absolute;
 }
 @media (min-width: 768px) {
   .show-menu {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 70px;
+    display: none;
   }
 }
 .show-menu a {

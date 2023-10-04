@@ -5,13 +5,13 @@ import CartItem from "../components/Cart/CartItem";
 function Cart() {
   return (
     <>
-      <div className="cart-container">
+      <div className="cart-container ">
         <div className="cart-content">
           {<CartSummary />}
           {<CartItem />}
+      <Link to="/Checkout">Checkout</Link>
         </div>
       </div>
-      <Link to="/Checkout">Checkout</Link>
     </>
   );
 }
