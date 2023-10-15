@@ -9,8 +9,8 @@ export default {
   theme: {
     screens: {
       sm: { min: "320px", max: "767px" },
-      md: { min: "768px"},
-      lg: { min: "976px"},
+      md: { min: "768px" },
+      lg: { min: "976px" },
       xl: "1440px",
     },
     colors: {

@@ -3,7 +3,7 @@
 function Carousel() {
     return ( 
         <>
-        <h1>Carousel</h1>
+        <h1>carousel</h1>
         </>
      );
 }

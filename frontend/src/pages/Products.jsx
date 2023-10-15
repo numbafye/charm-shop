@@ -3,13 +3,11 @@ import Navbar from "../components/Common/Navbar";
 
 function Products() {
   return (
-    <> 
-    <Navbar/>
     <div>
+      <Navbar/>
       <h1>Products</h1>
       <Link to="/">Go home</Link>
     </div>
-    </>
   );
 }
 

@@ -37,7 +37,7 @@ function Home() {
         <section className="m-10" id="about">
           <h2>About</h2>
           <p className="text-sm">
-            {/* 150 words */}
+            {/* 150 */}
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis,
             laboriosam vero cupiditate exercitationem cum ut voluptas dolor,
             blanditiis commodi perferendis vel explicabo, perspiciatis eligendi
@@ -99,7 +99,7 @@ function Home() {
               ></textarea>
             </div>
             <button type="submit" className="form-btn">
-              Submit Form
+              Send
             </button>
           </form>
         </section>

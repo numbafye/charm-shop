@@ -9,7 +9,7 @@ function Cart() {
         <div className="cart-content">
           {<CartSummary />}
           {<CartItem />}
-          <Link to="/Checkout">Checkout</Link>
+      <Link to="/Checkout">Checkout</Link>
         </div>
       </div>
     </>
