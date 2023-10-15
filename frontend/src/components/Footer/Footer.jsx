@@ -10,7 +10,7 @@ function Footer() {
             <p className="text-sm">A brief description of your company or website.</p>
           </div>
 
-          <div className="sm:flex space-x-1 md:flex space-x-20">
+          <div className="sm:flex md:flex space-x-20">
             <div className="mb-4 md:mb-0">
               <h3 className="text-lg font-semibold">Quick Links</h3>
               <ul className="text-sm">
