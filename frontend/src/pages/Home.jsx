@@ -104,6 +104,7 @@ function Home() {
           </form>
         </section>
       </Element>
+      <hr />
       <Footer />
     </>
   );
