@@ -33,11 +33,16 @@ input {
 
 img {
   display: block;
+  width: 7em;
+  border: 1px black solid;
 }
 
-.Shop {
+.ShopContainer {
   position: relative;
-  bottom: 4em;
+}
+.Shop {
+  position: absolute;
+  bottom: 2em;
 }
 
 .flip-horizontal {
