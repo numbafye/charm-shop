@@ -333,4 +333,8 @@ input {
 .slick-next {
   margin-right: -20px;
   margin-left: -20px;
+  background-color: black !important;
+  border-radius: 100px !important;
+  padding-top: 1.3px !important;
+  padding-left: 0.2px !important;
 }
