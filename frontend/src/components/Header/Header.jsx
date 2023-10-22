@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <>
-      <section className="ShopContainer">
+      <section className="Header">
         <div className=" mx-auto">
           <div className="banner flex justify-center">
             <img

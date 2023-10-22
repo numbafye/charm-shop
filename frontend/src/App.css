@@ -31,14 +31,9 @@ input {
   font: inherit;
 }
 
-img {
-  display: block;
-  width: 7em;
-  border: 1px black solid;
-}
-
-.ShopContainer {
+.Header {
   position: relative;
+  border-bottom: 1px black solid;
 }
 .Shop {
   position: absolute;
@@ -310,4 +305,32 @@ img {
 }
 .show-menu a {
   color: black;
+}
+
+/* ! CAROUSEL */
+
+.carousel-container {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.carousel-slide {
+  display: inline-block;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.center-image {
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 75px;
+  height: 75px;
+}
+
+.slick-prev,
+.slick-next {
+  margin-right: -20px;
+  margin-left: -20px;
 }
