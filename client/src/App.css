@@ -33,7 +33,6 @@ input {
 
 .Header {
   position: relative;
-  border-bottom: 1px black solid;
 }
 .Shop {
   position: absolute;
@@ -311,7 +310,6 @@ input {
 
 .carousel-container {
   text-align: center;
-  border-bottom: 1px solid black;
 }
 
 .carousel-slide {
@@ -331,10 +329,16 @@ input {
 
 .slick-prev,
 .slick-next {
-  margin-right: -20px;
-  margin-left: -20px;
   background-color: black !important;
   border-radius: 100px !important;
   padding-top: 1.3px !important;
   padding-left: 0.2px !important;
 }
+
+
+/* ! ABOUT */
+ #about {
+  background-color: #F8E2E4;
+ }
+
+/* ! CONTACT FORM */

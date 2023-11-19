@@ -34,8 +34,8 @@ function Home() {
       </div>
       <Carousel />
       <Element name="about">
-        <section className="m-10" id="about">
-          <h2>About</h2>
+        <section id="about" className="p-7 rounded-sm">
+          <h2 className="text-center">About</h2>
           <p className="text-sm">
             {/* 150 */}
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis,
@@ -60,8 +60,8 @@ function Home() {
         </section>
       </Element>
       <Element name="contact">
-        <section className="" id="contact">
-          <h2>Contact Me</h2>
+        <section className="m-10 bg-blue-700" id="contact">
+          <h2 className="text-center">Contact Me</h2>
           <form
             target="_blank"
             action="https://formsubmit.co/your@email.com"

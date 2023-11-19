@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import sanityClient from "../../../charmecom/Client";
 
 function Carousel() {
+  //SLIDESHOW FUNCTION
   const [slidesToShow, setSlidesToShow] = useState(2); // Initial value for slidesToShow
 
   useEffect(() => {
@@ -38,14 +40,46 @@ function Carousel() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-
   };
+
+  //SANITY CLIENT FETCHING
+  const [products, setProducts] = useState(null);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "product"]{
+          image,
+          name,
+          price,
+        }`
+      )
+      .then((data) => setProducts(data))
+      .catch(console.error);
+  });
+
+  console.log(products);
 
   return (
     <>
-      <div className="carousel-container p-20 bg-secondary">
+      <div className="carousel-container p-20">
         <Slider {...settings} className="center">
           <div className="carousel-slide">
+            {" "}
+            {products &&
+              products.map((products, index) => <div>{products.name}</div>)}
+          </div>
+        </Slider>
+      </div>
+    </>
+  );
+}
+
+export default Carousel;
+
+//Mock data in carousel function
+{
+  /* <div className="carousel-slide">
             <img
               src="src\assets\charm2.jpg"
               alt="Image 1"
@@ -65,11 +99,5 @@ function Carousel() {
               alt="Image 3"
               className="center-image"
             />
-          </div>
-        </Slider>
-      </div>
-    </>
-  );
+          </div> */
 }
-
-export default Carousel;

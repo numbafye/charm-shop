@@ -7,7 +7,7 @@ function Header() {
         <div className=" mx-auto">
           <div className="banner flex justify-center">
             <img
-              className="CloudL w-1/2 h-96"
+              className="CloudL w-1/2 h-96 rounded-sm"
               src="/src/assets/pinkcloud.jpg"
               alt="pink cloud"
             />
@@ -17,7 +17,7 @@ function Header() {
               alt="Charm Banner"
             />
             <img
-              className="CloudR w-1/2 h-96 flip-horizontal"
+              className="CloudR w-1/2 h-96 flip-horizontal rounded-sm"
               src="/src/assets/pinkcloud.jpg"
               alt="pink cloud"
             />
