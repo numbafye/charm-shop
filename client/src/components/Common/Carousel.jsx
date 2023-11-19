@@ -47,6 +47,7 @@ function Carousel() {
 
   useEffect(() => {
     sanityClient
+      //GROQ QUERY
       .fetch(
         `*[_type == "product"]{
           image,
@@ -56,7 +57,8 @@ function Carousel() {
       )
       .then((data) => setProducts(data))
       .catch(console.error);
-  });
+  }),
+    [];
 
   console.log(products);
 
@@ -64,11 +66,13 @@ function Carousel() {
     <>
       <div className="carousel-container p-20">
         <Slider {...settings} className="center">
-          <div className="carousel-slide">
-            {" "}
-            {products &&
-              products.map((products, index) => <div>{products.name}</div>)}
-          </div>
+          {" "}
+          {products &&
+            products.map((products, index) => (
+              <div key={index} className="carousel-slide">
+                <div>{products.name}</div>
+              </div>
+            ))}
         </Slider>
       </div>
     </>
