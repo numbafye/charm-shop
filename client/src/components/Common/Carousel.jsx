@@ -68,16 +68,16 @@ function Carousel() {
 
   return (
     <>
-      <div className="carousel-container p-20">
-        <Slider {...settings} className="center">
+      <div className="carousel-container p-10">
+        <Slider {...settings} className="">
           {" "}
           {products &&
             products.map((products, index) => (
               <div key={index} className="carousel-slide">
-                <div>
+                <div className="flex justify-center items-center">
                   {products.image && (
                     <img
-                      className="h-40 w-full"
+                      className="h-40 p-2 w-60"
                       src={products.image.url}
                       alt={products.name}
                     />
