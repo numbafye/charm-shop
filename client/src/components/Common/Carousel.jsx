@@ -76,7 +76,11 @@ function Carousel() {
               <div key={index} className="carousel-slide">
                 <div>
                   {products.image && (
-                    <img src={products.image.url} alt={products.name} />
+                    <img
+                      className="h-40 w-full"
+                      src={products.image.url}
+                      alt={products.name}
+                    />
                   )}
                 </div>
                 <div>{products.name}</div>
