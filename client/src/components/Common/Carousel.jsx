@@ -48,9 +48,13 @@ function Carousel() {
   useEffect(() => {
     sanityClient
       //GROQ QUERY
+      // FIX IMAGE QUERY
       .fetch(
         `*[_type == "product"]{
-          image,
+          "image": image.asset-> {
+            _id,
+            url
+          },
           name,
           price,
         }`
@@ -70,7 +74,13 @@ function Carousel() {
           {products &&
             products.map((products, index) => (
               <div key={index} className="carousel-slide">
+                <div>
+                  {products.image && (
+                    <img src={products.image.url} alt={products.name} />
+                  )}
+                </div>
                 <div>{products.name}</div>
+                <div>{products.price}</div>
               </div>
             ))}
         </Slider>
