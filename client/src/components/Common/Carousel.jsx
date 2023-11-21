@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+import sanityClient from "../../../charmecom/Client";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import sanityClient from "../../../charmecom/Client";
 
 function Carousel() {
   //SLIDESHOW FUNCTION
@@ -64,11 +64,9 @@ function Carousel() {
   }),
     [];
 
-  console.log(products);
-
   return (
     <>
-    <h2>You Might Also Like</h2>
+      <h2>You Might Also Like</h2>
       <div className="carousel-container p-10">
         <Slider {...settings} className="">
           {" "}
