@@ -1,4 +1,3 @@
-import Carousel from "../components/Common/Carousel";
 import Navbar from "../components/Common/Navbar";
 import Overlay from "../components/Common/Overlay";
 import Footer from "../components/Footer/Footer";
@@ -6,6 +5,7 @@ import Header from "../components/Header/Header";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Element, scroller } from "react-scroll";
+import ProductPreview from "../components/Product/ProductPreview";
 
 function Home() {
   const location = useLocation();
@@ -29,10 +29,7 @@ function Home() {
       <Overlay />
       <Navbar />
       <Header />
-      <div className="NewItems sm:hidden">
-        <h2>New Arrivals! (add 2 imgs showing most recently added items)</h2>
-      </div>
-      <Carousel />
+      <ProductPreview />
       <Element name="about">
         <section id="about" className="p-7 rounded-sm">
           <h2 className="text-center">About</h2>

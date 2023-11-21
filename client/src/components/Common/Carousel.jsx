@@ -68,6 +68,7 @@ function Carousel() {
 
   return (
     <>
+    <h2>You Might Also Like</h2>
       <div className="carousel-container p-10">
         <Slider {...settings} className="">
           {" "}
