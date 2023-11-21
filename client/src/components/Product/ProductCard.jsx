@@ -1,4 +1,5 @@
 import ProductPage from "./ProductPage";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import sanityClient from "../../../charmecom/Client";
 
@@ -28,28 +29,29 @@ function ProductCard() {
 
   return (
     <>
-      <h1>ProductCard</h1>
-      <div className="">
+      <div className="justify-center items-center">
         {products &&
           products.map((products, index) => (
-            <div key={index} className="border-black border-solid border-2">
-              <div className="">
+            <div
+              key={index}
+              className="border-black border-solid border-2 rounded-lg m-1 p-1"
+            >
+              <div className="flex justify-center">
                 {products.image && (
                   <img
-                    className="h-40 p-2 w-60"
+                    className="p-2 w-60 h-40"
                     src={products.image.url}
                     alt={products.name}
                   />
                 )}
               </div>
               <div className="text-center">
-                <div className="">{products.name}</div>
-                <div>{products.price}</div>
+                <p className="text-">{products.name}</p>
+                <p className="text-xs">{products.price}</p>
               </div>
             </div>
           ))}
       </div>
-      <ProductPage />
     </>
   );
 }
