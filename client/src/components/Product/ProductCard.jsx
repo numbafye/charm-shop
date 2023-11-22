@@ -1,15 +1,14 @@
-import ProductPage from "./ProductPage";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import sanityClient from "../../../charmecom/Client";
+import AddBtn from "../Common/AddBtn";
+import CartBtns from "../Common/CartBtn";
 
 function ProductCard() {
   const [products, setProducts] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     sanityClient
-      //GROQ QUERY
-      // FIX IMAGE QUERY
       .fetch(
         `*[_type == "product"]{
           "image": image.asset-> {
@@ -18,40 +17,65 @@ function ProductCard() {
           },
           name,
           price,
+          details
         }`
       )
       .then((data) => setProducts(data))
       .catch(console.error);
-  }),
-    [];
+  }, []);
 
-  console.log(products);
+  const openModal = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+  };
 
   return (
     <>
-      <div className="justify-center items-center">
+      <div className="grid grid-cols-2 gap-2 justify-items-center">
         {products &&
-          products.map((products, index) => (
-            <div
-              key={index}
-              className="border-black border-solid border-2 rounded-lg m-1 p-1"
-            >
-              <div className="flex justify-center">
-                {products.image && (
+          products.map((product, index) => (
+            <div key={index} className="grid-gap-4 rounded-md m-1 p-1">
+              <div className="">
+                {product.image && (
                   <img
-                    className="p-2 w-60 h-40"
-                    src={products.image.url}
-                    alt={products.name}
+                    className="p-2 max-w-full h-40 rounded-2xl cursor-pointer"
+                    src={product.image.url}
+                    alt={product.name}
+                    onClick={() => openModal(product)}
                   />
                 )}
               </div>
               <div className="text-center">
-                <p className="text-">{products.name}</p>
-                <p className="text-xs">{products.price}</p>
+                <p className="text-sm">{product.name}</p>
+                <p className="text-xs">{product.price}</p>
+                <AddBtn/>
               </div>
             </div>
           ))}
       </div>
+
+      {/* Modal */}
+      {selectedProduct && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h1>{selectedProduct.name}</h1>
+            <img
+              src={selectedProduct.image.url}
+              alt={selectedProduct.name}
+              className="modal-image"
+            />
+            <p>{selectedProduct.price}</p>
+            <p>{selectedProduct.details}</p>
+          <CartBtns/>
+          </div>
+        </div>
+      )}
     </>
   );
 }

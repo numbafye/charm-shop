@@ -12,10 +12,6 @@
   padding: 0;
 }
 
-body {
-  font-size: 16px;
-}
-
 a,
 li {
   text-decoration: none;
@@ -28,6 +24,7 @@ html {
 
 body {
   background: white;
+  font-size: 16px;
 }
 
 input {
