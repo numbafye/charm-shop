@@ -4,6 +4,7 @@ import Cart from "../../pages/Cart";
 import { Link as RouterLink } from "react-router-dom"; // Alias for react-router-dom Link
 
 function Navbar() {
+  //CART AND HAMBURGER OPEN FUNCTION
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
