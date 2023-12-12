@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
-import sanityClient from "../../../charmecom/Client";
-import AddBtn from "../Common/AddBtn";
-import CartBtns from "../Common/CartBtn";
+import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import sanityClient from '../../../charmecom/Client';
+import { useCart } from '../../CartContext';
+import AddBtn from '../Common/AddBtn';
+import CartBtns from '../Common/CartBtn';
 
 function ProductCard() {
   const [products, setProducts] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { addToCart, cart, updateQuantity } = useCart();
 
   useEffect(() => {
     sanityClient
@@ -51,7 +54,7 @@ function ProductCard() {
               <div className="text-center">
                 <p className="text-sm">{product.name}</p>
                 <p className="text-xs">{product.price}</p>
-                <AddBtn/>
+                <AddBtn product={product} />
               </div>
             </div>
           ))}
@@ -72,12 +75,18 @@ function ProductCard() {
             />
             <p>{selectedProduct.price}</p>
             <p>{selectedProduct.details}</p>
-          <CartBtns/>
+            <CartBtns selectedProduct={selectedProduct} />
           </div>
         </div>
       )}
     </>
   );
 }
+
+ProductCard.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  // Add any other prop types if needed
+};
+
 
 export default ProductCard;
