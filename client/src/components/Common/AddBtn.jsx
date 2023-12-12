@@ -1,21 +1,9 @@
-//ADD ITEM AND OPEN CART MENU
-import { useCart } from '../../CartContext';
-
-function AddBtn({ product }) {
-  const { addToCart } = useCart();
-
-  const handleAddToCart = () => {
-    addToCart(product);
-  };
-
+//ADD AND SUBTRACT ITEM FROM CART
+function AddBtn() {
   return (
     <>
       <div className="Btn-container">
-        <button
-          id="ATC"
-          className="CartBtn rounded-2xl border-2 border-solid"
-          onClick={handleAddToCart}
-        >
+        <button id="ATC" className="CartBtn rounded-2xl border-2 border-solid">
           Add to Cart
         </button>
       </div>
@@ -24,4 +12,3 @@ function AddBtn({ product }) {
 }
 
 export default AddBtn;
-

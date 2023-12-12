@@ -33,14 +33,6 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const updateQuantity = (productId, newQuantity) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  };
-
   const clearCart = () => {
     setCart([]);
   };

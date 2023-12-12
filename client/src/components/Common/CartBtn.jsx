@@ -1,40 +1,31 @@
-import PropTypes from "prop-types";
-import { useCart } from "../../CartContext";
+import { useState } from "react";
+import AddBtn from "./AddBtn";
 
 function CartBtns() {
   const [count, setCount] = useState(1);
 
-  const itemInCart = cart.find((item) => item.id === selectedProduct?.id);
-  const itemCount = itemInCart ? itemInCart.quantity : 0;
+  function increment() {
+    setCount((prevCount) => prevCount + 1);
+  }
 
   function decrement() {
     setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
   }
 
-  
   return (
-    <div className="rounded-md w-">
-      <button
-        className="CartBtn w-1/3 font-bold"
-        onClick={() => removeFromCart(selectedProduct?.id)}
-      >
-        -
-      </button>
-      <span className="w-1/3">{itemCount}</span>
-      <button
-        className="CartBtn w-1/3 font-bold"
-        onClick={() => addToCart(selectedProduct)}
-      >
-        +
-      </button>
-    </div>
+    <>
+      <div className=" rounded-md w-">
+        <button className="CartBtn w-1/3  font-bold" onClick={decrement}>
+          -
+        </button>
+        <span className="w-1/3">{count}</span>
+        <button className="CartBtn  w-1/3 font-bold" onClick={increment}>
+          +
+        </button>
+        <AddBtn />
+      </div>
+    </>
   );
 }
-
-CartBtns.propTypes = {
-  selectedProduct: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }),
-};
 
 export default CartBtns;
