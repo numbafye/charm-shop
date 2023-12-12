@@ -2,14 +2,14 @@ import { useState } from "react";
 import AddBtn from "./AddBtn";
 
 function CartBtns() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   function increment() {
     setCount((prevCount) => prevCount + 1);
   }
 
   function decrement() {
-    setCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
+    setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
   }
 
   
