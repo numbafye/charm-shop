@@ -1,10 +1,17 @@
 //ADD AND SUBTRACT ITEM FROM CART
+import { useCart } from "../../CartContext";
 
-function AddBtn() {
+function AddBtn({ product }) {
+  const { addToCart} = useCart();
+  
+  const handleAddToCart = () => {
+    addToCart(product);
+  }
+  
   return (
     <>
       <div className="Btn-container">
-        <button id="ATC" className="CartBtn rounded-2xl border-2 border-solid">
+        <button onClick={handleAddToCart} id="ATC" className="CartBtn rounded-2xl border-2 border-solid">
           Add to Cart
         </button>
       </div>

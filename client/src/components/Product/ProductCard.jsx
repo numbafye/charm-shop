@@ -11,6 +11,7 @@ function ProductCard() {
     sanityClient
       .fetch(
         `*[_type == "product"]{
+          _id,
           "image": image.asset-> {
             _id,
             url
@@ -52,7 +53,7 @@ function ProductCard() {
               <div className="text-center">
                 <p className="text-sm">{product.name}</p>
                 <p className="text-xs">{product.price}</p>
-                <AddBtn/>
+                <AddBtn product={product} />
               </div>
             </div>
           ))}
@@ -73,7 +74,7 @@ function ProductCard() {
             />
             <p>{selectedProduct.price}</p>
             <p>{selectedProduct.details}</p>
-          <CartBtns/>
+            <CartBtns />
           </div>
         </div>
       )}

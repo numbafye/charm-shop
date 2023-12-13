@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartCounter, setCartCounter] = useState(0);
