@@ -24,6 +24,7 @@ function ProductCard() {
       .catch(console.error);
   }, []);
 
+  //OPEN MORE INFO ON ITEM
   const openModal = (product) => {
     setSelectedProduct(product);
   };

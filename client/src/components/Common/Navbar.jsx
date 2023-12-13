@@ -1,30 +1,17 @@
 import { useState, useEffect } from "react";
-import MenuItems from "./MenuItems";
-import Cart from "../../pages/Cart";
-import { Link as RouterLink } from "react-router-dom";
-import { useCart } from "../../CartContext"; // Import the useCart hook
+import MenuItems from "./MenuItems"; // Import your MenuItems component
+import { Link as RouterLink } from "react-router-dom"; // Alias for react-router-dom Link
+import CartIcon from "./CartIcon";
 
 function Navbar() {
-  const { cart } = useCart(); // Get cart information from the context
-
-  const [isCartVisible, setIsCartVisible] = useState(false);
+  //HAMBURGER OPEN FUNCTION
   const [menuOpen, setMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0); // State to hold cart count
-
-  useEffect(() => {
-    // Calculate the total quantity in the cart
-    const totalCount = cart.reduce((total, item) => total + item.quantity, 0);
-    setCartCount(totalCount);
-  }, [cart]); // Update the count whenever the cart changes
-
-  const toggleCart = () => {
-    setIsCartVisible(!isCartVisible);
-  };
 
   const handleHamburgerClick = () => {
     setMenuOpen(!menuOpen);
   };
 
+  //NAVBAR TRANSITION
   const [isNavbarOpaque, setIsNavbarOpaque] = useState(false);
 
   useEffect(() => {
@@ -79,16 +66,7 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <div className="mr-3">
-          <box-icon
-            className="cart"
-            type="solid"
-            name="shopping-bag"
-            onClick={toggleCart}
-          ></box-icon>
-          <span id="cart-counter">{cartCount}</span>
-          {isCartVisible && <Cart />}
-        </div>
+    <CartIcon/>
       </div>
     </>
   );

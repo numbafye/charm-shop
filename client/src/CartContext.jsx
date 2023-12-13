@@ -4,6 +4,8 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [cartCounter, setCartCounter] = useState(0);
+  const [isCartVisible, setIsCartVisible] = useState(false); // New state for cart visibility
 
   const addToCart = ({ _id, ...product }) => {
     const existingItem = cart.find((item) => item._id === _id);
@@ -19,9 +21,13 @@ export const CartProvider = ({ children }) => {
     } else {
       setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
     }
+
+    setCartCounter((prevCounter) => prevCounter + 1);
   };
 
   const removeFromCart = (productId) => {
+    setCartCounter((prevCounter) => prevCounter - 1);
+
     setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
   };
 
@@ -35,12 +41,18 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCart([]);
+    setCartCounter(0);
+  };
+
+  const toggleCart = () => {
+    setIsCartVisible((prevVisibility) => !prevVisibility);
   };
 
   useEffect(() => {
     // Load cart from local storage on component mount
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
+    setCartCounter(storedCart.reduce((total, item) => total + item.quantity, 0));
   }, []);
 
   useEffect(() => {
@@ -50,7 +62,16 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}
+      value={{
+        cart,
+        cartCounter,
+        isCartVisible,
+        toggleCart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+      }}
     >
       {children}
     </CartContext.Provider>
