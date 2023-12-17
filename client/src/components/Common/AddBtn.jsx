@@ -2,7 +2,7 @@
 import { useCart } from "../../CartContext";
 
 function AddBtn({ product }) {
-  
+
   
   return (
     <>
