@@ -52,7 +52,7 @@ function ProductCard() {
               </div>
               <div className="text-center">
                 <p className="text-sm">{product.name}</p>
-                <p className="text-xs">{product.price}</p>
+                <p className="text-xs">${product.price}</p>
                 <AddBtn product={product} />
               </div>
             </div>

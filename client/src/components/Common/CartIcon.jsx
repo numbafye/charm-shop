@@ -2,7 +2,7 @@ import { useCart } from "../../CartContext";
 import Cart from "../../pages/Cart";
 
 function CartIcon() {
-  const { cartCounter, toggleCart, isCartVisible } = useCart();
+  const { toggleCart, isCartVisible } = useCart();
 
   return (
     <div className="mr-3">
@@ -12,7 +12,7 @@ function CartIcon() {
         type="solid"
         name="shopping-bag"
       ></box-icon>
-      <span id="cart-counter">{cartCounter}</span>
+      <span id="cart-counter">0</span>
       {isCartVisible && <Cart />}
     </div>
   );

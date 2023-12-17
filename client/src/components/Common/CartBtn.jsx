@@ -1,25 +1,17 @@
-import { useState } from "react";
 import AddBtn from "./AddBtn";
+import { useCart } from "../../CartContext";
 
 function CartBtns() {
-  const [count, setCount] = useState(1);
-
-  function increment() {
-    setCount((prevCount) => prevCount + 1);
-  }
-
-  function decrement() {
-    setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
-  }
+  const { incQty, decQty, qty } = useCart();
 
   return (
     <>
       <div className=" rounded-md w-">
-        <button className="CartBtn w-1/3  font-bold" onClick={decrement}>
+        <button onClick={decQty} className="CartBtn w-1/3  font-bold">
           -
         </button>
-        <span className="w-1/3">{count}</span>
-        <button className="CartBtn  w-1/3 font-bold" onClick={increment}>
+        <span className="w-1/3">{qty}</span>
+        <button onClick={incQty} className="CartBtn  w-1/3 font-bold">
           +
         </button>
         <AddBtn />
