@@ -4,11 +4,39 @@ const CartContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState([]);
   const [isCartVisible, setIsCartVisible] = useState(false); // New state for show cart
   const [totalPrice, setTotalPrice] = useState();
   const [totalQuantities, setTotalQuantities] = useState();
   const [qty, setQty] = useState(1);
+
+  const onAdd = (product, quantity) => {
+    const checkProductInCart = cartItems.find(
+      (item) => item._id === product._id
+    );
+    setTotalPrice(
+      (prevTotalPrice) => prevTotalPrice + product.price * quantity
+    );
+    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
+    //FOR ADDING EXISTING PRODUCTS
+    if (checkProductInCart) {
+      //UPDATE QUANITITY OF EXISTING PRODUCT IN CART
+      const updatedCartItems = cartItems.map((cartProduct) => {
+        //if its the same product, update
+        if (cartProduct._id === product._id)
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity + quantity,
+          };
+      });
+
+      setCartItems(updatedCartItems);
+    } else {
+      product.quantity = quantity;
+
+      setCartItems([...cartItems, { ...product }]);
+    }
+  };
 
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
@@ -49,6 +77,7 @@ export const CartProvider = ({ children }) => {
         qty,
         incQty,
         decQty,
+        onAdd,
       }}
     >
       {children}

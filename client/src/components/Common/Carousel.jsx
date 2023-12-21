@@ -76,7 +76,7 @@ function Carousel() {
                 <div className="flex justify-center items-center">
                   {products.image && (
                     <img
-                      className="h-40 p-2 w-60"
+                      className="h-32 p-2 w-40"
                       src={products.image.url}
                       alt={products.name}
                     />
