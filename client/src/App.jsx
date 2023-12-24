@@ -18,7 +18,7 @@ function App() {
         <Route path="/products" element={<ProductList />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/products/:_id" component={<ProductDetail/>} />
+        <Route path="/products/:id" element={<ProductDetail/>} />
       </Routes>
       </CartProvider>
     </Router>
