@@ -18,6 +18,7 @@ export default {
       secondary: "#ffee95",
       accent: "#ff49db",
       text: "#ffffff",
+      btn: "#FF9999"
     },
     extend: {},
 
@@ -33,6 +34,7 @@ export default {
       inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
       none: "none",
     },
+
   },
   plugins: [],
 };
