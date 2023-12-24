@@ -5,6 +5,7 @@ import { useCart } from "../../CartContext";
 import Carousel from "../../components/Common/Carousel";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Common/Navbar";
 
 function ProductDetail() {
   const { decQty, incQty, qty, onAdd } = useCart();
@@ -39,13 +40,16 @@ function ProductDetail() {
 
   return (
     <>
+      <Navbar />
       <div className="border-2">
         <Link className="flex" to={"/products"}>
           <box-icon name="arrow-back"></box-icon>Go Back
         </Link>
         <img src={product.image.url} alt={product.name} className="" />
-        <h1>{product.name}</h1>
-        <p>{product.price}</p>
+        <b>
+          <h1>{product.name}</h1>
+          <p>${product.price}</p>
+        </b>
       </div>
       <div className="cartBtn flex justify-evenly border-2 w-32">
         <button onClick={decQty}>-</button>
