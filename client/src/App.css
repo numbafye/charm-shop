@@ -308,6 +308,7 @@ input {
   z-index: 950;
   animation: Opa 0.5s ease;
   position: absolute;
+  border-end-end-radius: 1em;
 }
 @media (min-width: 1025px) {
   .show-menu {

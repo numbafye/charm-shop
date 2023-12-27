@@ -11,32 +11,9 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
-  //NAVBAR TRANSITION
-  const [isNavbarOpaque, setIsNavbarOpaque] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsNavbarOpaque(true);
-      } else {
-        setIsNavbarOpaque(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
-      <div
-        className={`navbar-container ${
-          isNavbarOpaque ? "opaque" : ""
-        } flex z-50 sticky top-0 h-12 pt-2 w-full`}
-      >
+      <div className="navbar-container flex z-50 sticky top-0 h-12 pt-2 w-full">
         <div className="hamburger-container">
           <div
             className={`hamburger-icon ${menuOpen ? "open" : ""}`}

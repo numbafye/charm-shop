@@ -57,7 +57,10 @@ function Cart() {
               </div>
               <div className="btn-container sticky bottom-10 text-center">
                 <Link to={"/Checkout"}>
-                  <button className="btn border-2 px-6 rounded-3xl text-text bg-btn" onClick="">
+                  <button
+                    className="btn border-2 px-6 rounded-3xl text-text bg-btn"
+                    onClick=""
+                  >
                     Pay With Stripe
                   </button>
                 </Link>

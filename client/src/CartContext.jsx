@@ -39,6 +39,8 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  //2:17:55
+
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
   };
