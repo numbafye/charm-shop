@@ -51,7 +51,7 @@ function Navbar() {
         </div>
 
         <div className="navbar">
-          <ul className="menu-items" id="menu">
+          <ul className="menu-items pl-5 pt-1" id="menu">
             <li>
               <RouterLink to="/">Home</RouterLink>
             </li>
@@ -59,14 +59,11 @@ function Navbar() {
               <RouterLink to="/products">Shop</RouterLink>
             </li>
             <li>
-              <RouterLink to="/?scrollTo=about">About</RouterLink>
-            </li>
-            <li>
               <RouterLink to="/?scrollTo=contact">Contact</RouterLink>
             </li>
           </ul>
         </div>
-    <CartIcon/>
+        <CartIcon />
       </div>
     </>
   );

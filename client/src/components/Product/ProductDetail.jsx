@@ -11,7 +11,6 @@ function ProductDetail() {
   const { decQty, incQty, qty, onAdd } = useCart();
 
   const { id } = useParams();
-  console.log("Product ID:", id);
 
   const [product, setProduct] = useState(null);
 
@@ -51,12 +50,17 @@ function ProductDetail() {
           <p>${product.price}</p>
         </b>
       </div>
-      <div className="cartBtn flex justify-evenly border-2 w-32">
+      <div className="qtyBtns flex justify-evenly border-2 w-32">
         <button onClick={decQty}>-</button>
         <span>{qty}</span>
         <button onClick={incQty}>+</button>
       </div>
-      <button className="p-1 w-52 text-btn border-2">ADD TO CART</button>
+      <button
+        onClick={() => onAdd(product, qty)}
+        className="addBtn p-1 w-52 text-btn border-2"
+      >
+        ADD TO CART
+      </button>
       <div className="description">
         <p>{product.details}</p>
       </div>

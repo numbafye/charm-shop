@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
 
@@ -6,8 +6,8 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isCartVisible, setIsCartVisible] = useState(false); // New state for show cart
-  const [totalPrice, setTotalPrice] = useState();
-  const [totalQuantities, setTotalQuantities] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
   const onAdd = (product, quantity) => {
@@ -28,6 +28,7 @@ export const CartProvider = ({ children }) => {
             ...cartProduct,
             quantity: cartProduct.quantity + quantity,
           };
+        return cartProduct;
       });
 
       setCartItems(updatedCartItems);
@@ -53,18 +54,6 @@ export const CartProvider = ({ children }) => {
   const toggleCart = () => {
     setIsCartVisible((prevVisibility) => !prevVisibility);
   };
-
-  // useEffect(() => {
-  //    Load cart from local storage on component mount
-  //   const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  //   setCart(storedCart);
-  //   setCartCounter(storedCart.reduce((total, item) => total + item.quantity, 0));
-  // }, []);
-
-  // useEffect(() => {
-  //    Save cart to local storage whenever it changes
-  //   localStorage.setItem("cart", JSON.stringify(cart));
-  // }, [cart]);
 
   return (
     <CartContext.Provider

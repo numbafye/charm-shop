@@ -3,7 +3,7 @@ import sanityClient from "../../../charmecom/Client";
 import { Link } from "react-router-dom";
 
 function ProductCard() {
-  const [products, setProducts] = useState(null);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     sanityClient
@@ -19,14 +19,14 @@ function ProductCard() {
           details
         }`
       )
-      .then((data) => setProducts(data))
+      .then((data) => setProduct(data))
       .catch(console.error);
   }, []);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-      {products &&
-        products.map((product, index) => (
+    <div className="product-card grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      {product &&
+        product.map((product, index) => (
           <Link key={product._id} to={`/products/${product._id}`}>
             <div key={index} className="rounded-sm hover:ring-1 ring-accent">
               <div className="h-48 overflow-hidden">

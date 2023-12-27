@@ -5,14 +5,14 @@ function CartIcon() {
   const { toggleCart, isCartVisible } = useCart();
 
   return (
-    <div className="mr-3">
+    <div className="mr-3 mt-2">
       <box-icon
         onClick={toggleCart}
         className="cart"
         type="solid"
         name="shopping-bag"
       ></box-icon>
-      <span id="cart-counter">0</span>
+      <span id="cart-counter"></span>
       {isCartVisible && <Cart />}
     </div>
   );
