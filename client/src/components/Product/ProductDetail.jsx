@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useCart } from "../../CartContext";
 import Carousel from "../../components/Common/Carousel";
 import Footer from "../Footer/Footer";
-import { Link } from "react-router-dom";
 import Navbar from "../../components/Common/Navbar";
 
 function ProductDetail() {
@@ -41,10 +40,11 @@ function ProductDetail() {
     <>
       <Navbar />
       <div className="border-2">
-        <Link className="flex" to={"/products"}>
-          <box-icon name="arrow-back"></box-icon>Go Back
-        </Link>
-        <img src={product.image.url} alt={product.name} className="" />
+        <img
+          src={product.image.url}
+          alt={product.name}
+          className="p-0 h-96 w-full object-contain"
+        />
         <b>
           <h1>{product.name}</h1>
           <p>${product.price}</p>
@@ -57,7 +57,7 @@ function ProductDetail() {
       </div>
       <button
         onClick={() => onAdd(product, qty)}
-        className="addBtn p-1 w-52 text-btn border-2"
+        className=" text-text bg-btn p-1 w-52 border-2"
       >
         ADD TO CART
       </button>

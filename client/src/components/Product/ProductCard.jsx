@@ -32,7 +32,7 @@ function ProductCard() {
               <div className="h-48 overflow-hidden">
                 {product.image && (
                   <img
-                    className="sm:object-cover md:object-scale-down w-full h-full cursor-pointer"
+                    className="sm:object-contain md:object-scale-down w-full h-full cursor-pointer"
                     src={product.image.url}
                     alt={product.name}
                   />
