@@ -1,5 +1,6 @@
 import { Link as RouterLink } from "react-router-dom"; // Alias for react-router-dom Link
 
+// eslint-disable-next-line react/prop-types
 function MenuItems({ closeMenu }) {
   return (
     <ul className="hamburger-items show-menu sm:gap-10 gap-32" id="menu">

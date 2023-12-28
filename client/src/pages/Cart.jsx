@@ -5,7 +5,7 @@ import useOutsideClick from "../components/hook/useOutsideClick";
 
 function Cart() {
   const cartRef = useRef();
-  const { toggleCart, totalPrice, cartItems, isCartVisible } = useCart();
+  const { toggleCart, totalPrice, cartItems, isCartVisible, toggleCartItemQuantity } = useCart();
   console.log(cartItems);
 
   useOutsideClick(cartRef, () => {
@@ -44,11 +44,11 @@ function Cart() {
                   </div>
                   <div className="flex flex-row justify-between text-center mt-2">
                     <div className="qtyBtns flex justify-evenly border-2 w-full text-lg">
-                      <button className=" w-full" onClick="">
+                      <button className=" w-full" onClick={() => toggleCartItemQuantity(item._id, 'dec')}>
                         -
                       </button>
                       <span className=" w-full">{item.quantity}</span>
-                      <button className=" w-full" onClick="">
+                      <button className=" w-full" onClick={() => toggleCartItemQuantity(item._id, 'inc')}>
                         +
                       </button>
                     </div>

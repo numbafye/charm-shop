@@ -5,13 +5,10 @@ const CartContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [isCartVisible, setIsCartVisible] = useState(false); // New state for show cart
+  const [isCartVisible, setIsCartVisible] = useState(false); 
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
-
-  let foundProduct;
-  let index;
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
@@ -43,25 +40,36 @@ export const CartProvider = ({ children }) => {
   };
   //CART QUANTITY BTNS
   const toggleCartItemQuantity = (id, value) => {
-    foundProduct = cartItems.find((item) => item._id === id);
-    index = cartItems.findIndex((product) => product._id === id);
+    const index = cartItems.findIndex((item) => item._id === id);
+    const newCartItems = [...cartItems]; // Cloning the cart items array
 
-    if (value === "inc") {
-      setCartItems([
-        ...cartItems,
-        { ...foundProduct, quantity: foundProduct.quantity + 1 },
-      ]);
-      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
-      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
-    } else if (value === "dec") {
-      if (foundProduct.quantity > 1) {
-        setCartItems([
-          ...cartItems,
-          { ...foundProduct, quantity: foundProduct.quantity - 1 },
-        ]);
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
-        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+    if (index >= 0) {
+      const foundProduct = newCartItems[index];
+
+      if (value === "inc") {
+        newCartItems[index] = {
+          ...foundProduct,
+          quantity: foundProduct.quantity + 1,
+        };
+        setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+      } else if (value === "dec") {
+        if (foundProduct.quantity > 1) {
+          newCartItems[index] = {
+            ...foundProduct,
+            quantity: foundProduct.quantity - 1,
+          };
+          setTotalPrice(
+            (prevTotalPrice) => prevTotalPrice - foundProduct.price
+          );
+          setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+        } else {
+          //  remove  item from the cart if the quantity is 0
+          newCartItems.splice(index, 1);
+        }
       }
+
+      setCartItems(newCartItems); // Update the state with the new cart items array
     }
   };
 
@@ -93,6 +101,7 @@ export const CartProvider = ({ children }) => {
         incQty,
         decQty,
         onAdd,
+        toggleCartItemQuantity,
       }}
     >
       {children}

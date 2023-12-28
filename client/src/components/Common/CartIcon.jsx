@@ -2,17 +2,16 @@ import { useCart } from "../../CartContext";
 import Cart from "../../pages/Cart";
 
 function CartIcon() {
-  const { toggleCart, isCartVisible } = useCart();
+  const { toggleCart, isCartVisible, totalQuantities } = useCart();
 
   return (
-    <div className="mr-3 mt-2">
+    <div className="mr-3 mt-1">
       <box-icon
         onClick={toggleCart}
-        className="cart"
         type="solid"
         name="shopping-bag"
       ></box-icon>
-      <span id="cart-counter"></span>
+      <span className="cart-counter" >{totalQuantities}</span>
       {isCartVisible && <Cart />}
     </div>
   );
