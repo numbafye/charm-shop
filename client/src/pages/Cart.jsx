@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../CartContext";
 import { useRef } from "react";
+import useOutsideClick from "../components/hook/useOutsideClick";
 
 function Cart() {
   const cartRef = useRef();
-
-  const { toggleCart, totalPrice, cartItems } = useCart();
+  const { toggleCart, totalPrice, cartItems, isCartVisible } = useCart();
   console.log(cartItems);
+
+  useOutsideClick(cartRef, () => {
+    if (isCartVisible) toggleCart();
+  });
 
   return (
     <>
@@ -24,26 +28,35 @@ function Cart() {
                 <h3>Your shopping bag is empty</h3>
               </div>
             )}
+
             <div className="product-container">
               {cartItems.map((item) => (
-                <div className="product" key={item._id}>
+                <div
+                  className="product border p-3 rounded-md shadow-md pb-2"
+                  key={item._id}
+                >
                   <img className="mt-3" src={item.image.url} alt={item.name} />
-                  <div>
-                    <h3>{item.name}</h3>
-                    <p>${item.price}</p>
+                  <div className=" text-center mb-5">
+                    <b className="flex justify-between">
+                      <h3 className="text-left">{item.name}</h3>
+                      <p className="text-right">${item.price}</p>
+                    </b>
                   </div>
-                  <div className="flex flex-nowrap justify-between">
-                    <div className="qtyBtns flex justify-evenly border-2 w-32">
-                      <button onClick="">-</button>
-                      <span>{item.quantity}</span>
-                      <button onClick="">+</button>
-                    </div>
-                    <div className="flex">
-                      <button className="remove-item" onClick="">
-                        <box-icon type="solid" name="x-circle"></box-icon>
+                  <div className="flex flex-row justify-between text-center mt-2">
+                    <div className="qtyBtns flex justify-evenly border-2 w-full text-lg">
+                      <button className=" w-full" onClick="">
+                        -
+                      </button>
+                      <span className=" w-full">{item.quantity}</span>
+                      <button className=" w-full" onClick="">
+                        +
                       </button>
                     </div>
+                    <div className=""></div>
                   </div>
+                  <button className="w-full remove-item text-xs mt-5 " onClick="">
+                    <b className="border-b">REMOVE </b>
+                  </button>
                 </div>
               ))}
             </div>

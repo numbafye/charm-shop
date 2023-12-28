@@ -2,22 +2,22 @@ import { Link as RouterLink } from "react-router-dom"; // Alias for react-router
 
 function MenuItems({ closeMenu }) {
   return (
-    <ul className="hamburger-items show-menu" id="menu">
-      <li className="sm:w-32 md:w-40 w-48">
+    <ul className="hamburger-items show-menu sm:gap-10 gap-32" id="menu">
         <RouterLink onClick={closeMenu} to="/">
+      <li className="h-40 w-full pt-14">
           Home
-        </RouterLink>
       </li>
-      <li className="sm:w-32 md:w-40 w-48">
+        </RouterLink>
         <RouterLink onClick={closeMenu} to="/products">
+      <li className="h-40 w-full pt-14">
           Shop
-        </RouterLink>
       </li>
-      <li className="sm:w-32 md:w-40 w-48">
+        </RouterLink>
         <RouterLink onClick={closeMenu} to="/?scrollTo=contact">
+      <li className="h-40 w-full pt-14">
           Contact
-        </RouterLink>
       </li>
+        </RouterLink>
     </ul>
   );
 }
