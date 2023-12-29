@@ -5,7 +5,7 @@ const CartContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [isCartVisible, setIsCartVisible] = useState(false); 
+  const [isCartVisible, setIsCartVisible] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
@@ -38,30 +38,61 @@ export const CartProvider = ({ children }) => {
       setCartItems([...cartItems, { ...product }]);
     }
   };
-  //CART QUANTITY BTNS
-  const toggleCartItemQuantity = (id, value) => {
+
+  const onRemove = (id, value) => {
     const newCartItems = cartItems.map((item) => {
       if (item._id === id) {
-        if (value === 'inc') {
-          return { ...item, quantity: item.quantity + 1 };
-        } else if (value === 'dec') {
-          return { ...item, quantity: item.quantity - 1 };
+        if (value === "remove") {
+          return { ...item, quantity: 0 };
         }
       }
       return item;
-    }).filter(item => item.quantity > 0); // Remove items with quantity 0
-  
-    setCartItems(newCartItems); // Update cart items
-  
-    // Update total quantities
-    const newTotalQuantities = newCartItems.reduce((total, item) => total + item.quantity, 0);
+    }).filter((item) => item.quantity > 0);
+    setCartItems(newCartItems);
+
+    const newTotalQuantities = newCartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
     setTotalQuantities(newTotalQuantities);
-  
+
     // Update total price
-    const newTotalPrice = newCartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const newTotalPrice = newCartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
     setTotalPrice(newTotalPrice);
   };
   
+  //CART QUANTITY BTNS
+  const toggleCartItemQuantity = (id, value) => {
+    const newCartItems = cartItems
+      .map((item) => {
+        if (item._id === id) {
+          if (value === "inc") {
+            return { ...item, quantity: item.quantity + 1 };
+          } else if (value === "dec") {
+            return { ...item, quantity: item.quantity - 1 };
+          }
+        }
+        return item;
+      })
+      .filter((item) => item.quantity > 0); // Remove items with quantity 0
+
+    setCartItems(newCartItems); // Update cart items
+
+    const newTotalQuantities = newCartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    setTotalQuantities(newTotalQuantities);
+
+    const newTotalPrice = newCartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setTotalPrice(newTotalPrice);
+  };
 
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
@@ -92,6 +123,7 @@ export const CartProvider = ({ children }) => {
         decQty,
         onAdd,
         toggleCartItemQuantity,
+        onRemove,
       }}
     >
       {children}

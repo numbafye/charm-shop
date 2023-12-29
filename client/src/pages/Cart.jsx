@@ -5,7 +5,14 @@ import useOutsideClick from "../components/hook/useOutsideClick";
 
 function Cart() {
   const cartRef = useRef();
-  const { toggleCart, totalPrice, cartItems, isCartVisible, toggleCartItemQuantity } = useCart();
+  const {
+    toggleCart,
+    totalPrice,
+    cartItems,
+    isCartVisible,
+    toggleCartItemQuantity,
+    onRemove,
+  } = useCart();
   console.log(cartItems);
 
   useOutsideClick(cartRef, () => {
@@ -44,17 +51,26 @@ function Cart() {
                   </div>
                   <div className="flex flex-row justify-between text-center mt-2">
                     <div className="qtyBtns flex justify-evenly border-2 w-full text-lg">
-                      <button className=" w-full" onClick={() => toggleCartItemQuantity(item._id, 'dec')}>
+                      <button
+                        className=" w-full"
+                        onClick={() => toggleCartItemQuantity(item._id, "dec")}
+                      >
                         -
                       </button>
                       <span className=" w-full">{item.quantity}</span>
-                      <button className=" w-full" onClick={() => toggleCartItemQuantity(item._id, 'inc')}>
+                      <button
+                        className=" w-full"
+                        onClick={() => toggleCartItemQuantity(item._id, "inc")}
+                      >
                         +
                       </button>
                     </div>
                     <div className=""></div>
                   </div>
-                  <button className="w-full remove-item text-xs mt-5 " onClick="">
+                  <button
+                    className="w-full remove-item text-xs mt-5 "
+                    onClick={() => onRemove(item._id, "remove")}
+                  >
                     <b className="border-b">REMOVE </b>
                   </button>
                 </div>
