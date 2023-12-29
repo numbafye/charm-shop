@@ -40,14 +40,16 @@ export const CartProvider = ({ children }) => {
   };
 
   const onRemove = (id, value) => {
-    const newCartItems = cartItems.map((item) => {
-      if (item._id === id) {
-        if (value === "remove") {
-          return { ...item, quantity: 0 };
+    const newCartItems = cartItems
+      .map((item) => {
+        if (item._id === id) {
+          if (value === "remove") {
+            return { ...item, quantity: 0 };
+          }
         }
-      }
-      return item;
-    }).filter((item) => item.quantity > 0);
+        return item;
+      })
+      .filter((item) => item.quantity > 0);
     setCartItems(newCartItems);
 
     const newTotalQuantities = newCartItems.reduce(
@@ -63,7 +65,7 @@ export const CartProvider = ({ children }) => {
     );
     setTotalPrice(newTotalPrice);
   };
-  
+
   //CART QUANTITY BTNS
   const toggleCartItemQuantity = (id, value) => {
     const newCartItems = cartItems
@@ -106,6 +108,10 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const resetQty = () => {
+    setQty(1);
+  };
+
   const toggleCart = () => {
     setIsCartVisible((prevVisibility) => !prevVisibility);
   };
@@ -121,6 +127,7 @@ export const CartProvider = ({ children }) => {
         qty,
         incQty,
         decQty,
+        resetQty,
         onAdd,
         toggleCartItemQuantity,
         onRemove,

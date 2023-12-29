@@ -7,13 +7,15 @@ import Footer from "../Footer/Footer";
 import Navbar from "../../components/Common/Navbar";
 
 function ProductDetail() {
-  const { decQty, incQty, qty, onAdd } = useCart();
+  const { decQty, incQty, qty, onAdd, resetQty } = useCart();
 
   const { id } = useParams();
 
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    resetQty();
+
     sanityClient
       .fetch(
         `*[_type == "product" && _id == $productId]{
