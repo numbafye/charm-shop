@@ -257,15 +257,17 @@ input {
 
 
 .cart-counter {
-  min-width: 28px;
+  min-width: 10px;
+  width: 20px;
   padding: 0 10px;
-  height: 27px;
+  height: 22px;
+  border: #f8e2e4 solid 1px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: hotpink;
-  transform: translate(30%, -60%);
+  color: white;
+  transform: translate(50%, -80%);
   font-size: 16px;
 }
 

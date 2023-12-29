@@ -11,7 +11,10 @@ function CartIcon() {
         type="solid"
         name="shopping-bag"
       ></box-icon>
-      <span className="cart-counter" >{totalQuantities}</span>
+      {totalQuantities > 0 && (
+        <span className="cart-counter bg-accent">{totalQuantities}</span>
+      )}
+
       {isCartVisible && <Cart />}
     </div>
   );

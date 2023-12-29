@@ -40,38 +40,28 @@ export const CartProvider = ({ children }) => {
   };
   //CART QUANTITY BTNS
   const toggleCartItemQuantity = (id, value) => {
-    const index = cartItems.findIndex((item) => item._id === id);
-    const newCartItems = [...cartItems]; // Cloning the cart items array
-
-    if (index >= 0) {
-      const foundProduct = newCartItems[index];
-
-      if (value === "inc") {
-        newCartItems[index] = {
-          ...foundProduct,
-          quantity: foundProduct.quantity + 1,
-        };
-        setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
-        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
-      } else if (value === "dec") {
-        if (foundProduct.quantity > 1) {
-          newCartItems[index] = {
-            ...foundProduct,
-            quantity: foundProduct.quantity - 1,
-          };
-          setTotalPrice(
-            (prevTotalPrice) => prevTotalPrice - foundProduct.price
-          );
-          setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
-        } else {
-          //  remove  item from the cart if the quantity is 0
-          newCartItems.splice(index, 1);
+    const newCartItems = cartItems.map((item) => {
+      if (item._id === id) {
+        if (value === 'inc') {
+          return { ...item, quantity: item.quantity + 1 };
+        } else if (value === 'dec') {
+          return { ...item, quantity: item.quantity - 1 };
         }
       }
-
-      setCartItems(newCartItems); // Update the state with the new cart items array
-    }
+      return item;
+    }).filter(item => item.quantity > 0); // Remove items with quantity 0
+  
+    setCartItems(newCartItems); // Update cart items
+  
+    // Update total quantities
+    const newTotalQuantities = newCartItems.reduce((total, item) => total + item.quantity, 0);
+    setTotalQuantities(newTotalQuantities);
+  
+    // Update total price
+    const newTotalPrice = newCartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    setTotalPrice(newTotalPrice);
   };
+  
 
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
