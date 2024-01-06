@@ -1,18 +1,14 @@
-//COMPONENTS FIRE AFTER EACH OTHER? SUMMARY ON TOP OF: 1
-
-import Comfirmation from "../components/Checkout/Confirmation";
 import Payment from "../components/Checkout/Payment";
-import ShippingInfo from "../components/Checkout/ShippingInfo";
-import Summary from "../components/Checkout/Summary";
+import { useCart } from "../CartContext"
 
 function Checkout() {
+const { totalPrice } = useCart();
+
   return (
     <>
       <h1>Checkout</h1>
-      <Summary />
-      <ShippingInfo />
+      <p>{totalPrice}</p>
       <Payment />
-      <Comfirmation />
     </>
   );
 }

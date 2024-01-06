@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import MenuItems from "./MenuItems"; // Import your MenuItems component
-import { Link as RouterLink } from "react-router-dom"; // Alias for react-router-dom Link
+import MenuItems from "./MenuItems";
+import { Link as RouterLink } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import useOutsideClick from "../hook/useOutsideClick";
 
@@ -8,12 +8,21 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
 
-  // This will close the menu when clicking outside
+  // Close the menu when clicking outside
   useOutsideClick(menuRef, () => {
-    if (menuOpen) setMenuOpen(false);
+    if (menuOpen) {
+      setMenuOpen(false);
+    }
   });
 
+  const toggleMenu = () => {
+    setMenuOpen((prevMenuOpen) => {
+      return !prevMenuOpen;
+    });
+  };
+
   useEffect(() => {
+    // Updating the body style based on the menuOpen state
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
 
@@ -23,16 +32,15 @@ function Navbar() {
         className={`navbar-container flex z-50 sticky top-0 h-12 pt-2 w-full`}
       >
         <div className="hamburger-container">
-        <button
-  className={`hamburger-icon ${menuOpen ? "open" : ""}`}
-  onClick={() => setMenuOpen(!menuOpen)}
-  aria-label="Toggle menu"
->
-  <span className="bar"></span>
-  <span className="bar"></span>
-  <span className="bar"></span>
-</button>
-
+          <button
+            className={`hamburger-icon ${menuOpen ? "open" : ""}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
         </div>
 
         <div className="navbar" ref={menuRef}>
@@ -56,10 +64,10 @@ function Navbar() {
             </RouterLink>
           </ul>
         </div>
-        <CartIcon />
+        <CartIcon/>
       </div>
       <div className={`show-menu ${menuOpen ? "active" : ""}`}>
-        <MenuItems closeMenu={() => setMenuOpen(false)} />
+        <MenuItems closeMenu={() => setMenuOpen(false)} />{" "}
       </div>
     </>
   );

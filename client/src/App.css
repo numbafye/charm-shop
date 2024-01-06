@@ -180,6 +180,7 @@ input {
   position: relative;
   margin: 0.1em 1em 0 1em;
   cursor: pointer;
+  z-index: 1001;
 }
 
 @media (min-width: 1025px) {
@@ -255,7 +256,6 @@ input {
   }
 }
 
-
 .cart-counter {
   min-width: 10px;
   width: 20px;
@@ -328,6 +328,9 @@ input {
 
 @media (min-width: 1025px) {
   .show-menu {
+    display: none;
+  }
+  .hamburger-icon {
     display: none;
   }
 }

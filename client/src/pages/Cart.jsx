@@ -13,7 +13,6 @@ function Cart() {
     toggleCartItemQuantity,
     onRemove,
   } = useCart();
-  console.log(cartItems);
 
   useOutsideClick(cartRef, () => {
     if (isCartVisible) toggleCart();
@@ -27,7 +26,7 @@ function Cart() {
             <span className="absolute" onClick={toggleCart}>
               <box-icon name="chevron-left"></box-icon>{" "}
             </span>
-            <h2 className="w-full text-center ">CART</h2>
+            <h2 className="w-full text-center">CART</h2>
           </div>
           <div className="cart-content">
             {cartItems.length < 1 && (
@@ -86,10 +85,7 @@ function Cart() {
               </div>
               <div className="btn-container sticky bottom-10 text-center">
                 <Link to={"/Checkout"}>
-                  <button
-                    className="btn border-2 px-6 rounded-3xl text-text bg-btn"
-                    onClick=""
-                  >
+                  <button className="btn border-2 px-6 rounded-3xl text-text bg-btn">
                     Pay With Stripe
                   </button>
                 </Link>
