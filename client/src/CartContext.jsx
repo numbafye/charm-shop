@@ -50,8 +50,9 @@ export const CartProvider = ({ children }) => {
         return item;
       })
       .filter((item) => item.quantity > 0);
+    // Update cart items
     setCartItems(newCartItems);
-
+    //UPDATE TOTAL QUANTITY
     const newTotalQuantities = newCartItems.reduce(
       (total, item) => total + item.quantity,
       0
@@ -66,7 +67,7 @@ export const CartProvider = ({ children }) => {
     setTotalPrice(newTotalPrice);
   };
 
-  //CART QUANTITY BTNS
+  //CART QUANTITY BTNS id = of item value = set to buttons
   const toggleCartItemQuantity = (id, value) => {
     const newCartItems = cartItems
       .map((item) => {
@@ -79,9 +80,10 @@ export const CartProvider = ({ children }) => {
         }
         return item;
       })
-      .filter((item) => item.quantity > 0); // Remove items with quantity 0
+      // filter OUT items with quantity less than 0
+      .filter((item) => item.quantity > 0);
 
-    setCartItems(newCartItems); // Update cart items
+    setCartItems(newCartItems);
 
     const newTotalQuantities = newCartItems.reduce(
       (total, item) => total + item.quantity,
