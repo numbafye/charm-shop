@@ -1,33 +1,22 @@
-require("dotenv").config({ path: "./.env" });
-
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const stripeRoutes = require("./routes/stripe");
+
 const app = express();
-app.use(express.static("public"));
 
-const YOUR_DOMAIN = "http://localhost:4242";
+app.use(cors());
+app.use(bodyParser.json());
 
-app.post("/create-checkout-session", async (req, res) => {
-  const params = {
-    submit_type: "pay",
-    mode: "payment",
-    billing_addres_collection: "auto",
-    shipping_options: [{ shipping_rate: "shr_1OW551EaXUwV3XlqGjrUqBYe" }],
-    line_items: [
-      {
-        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: "{{PRICE_ID}}",
-        quantity: 1,
-      },
-    ],
-    mode: "payment",
-    success_url: `${YOUR_DOMAIN}?success=true`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
-  };
+app.use("/stripe", stripeRoutes);
 
-  const session = await stripe.checkout.sessions.create();
-
-  res.redirect(303, session.url);
+// Define a new route for the root path
+app.get("/", (req, res) => {
+  res.send("Welcome to my e-commerce site!");
 });
 
-app.listen(4242, () => console.log("Running on http://localhost:4242"));
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Server is running on port http://localhost:${port}`);
+});

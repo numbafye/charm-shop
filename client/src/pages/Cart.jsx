@@ -1,6 +1,7 @@
 import { useCart } from "../CartContext";
 import { useRef, useState, useEffect } from "react";
 import useOutsideClick from "../components/hook/useOutsideClick";
+import axios from 'axios'
 
 function Cart() {
   const cartRef = useRef();
@@ -20,14 +21,6 @@ function Cart() {
   //Payment message integration
   const [message, setMessage] = useState("");
 
-  const handleCheckout = async () => {
-    const response = await fetch("/create-checkout-session", {
-      method: "POST",
-    });
-    const session = await response.json();
-    window.location.href = session.url; // Redirect to Stripe Checkout
-  };
-
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
@@ -39,6 +32,34 @@ function Cart() {
       );
     }
   }, []);
+
+  const handleCheckout = async () => {
+    try {
+      // Create a list of items for checkout
+      const items = cartItems.map((item) => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.name,
+          },
+          unit_amount: item.price * 100, // Stripe expects the amount in cents
+        },
+        quantity: item.quantity,
+      }));
+
+      // Call your backend to create the Checkout Session
+      const response = await axios.post('http://localhost:3001/stripe/create-checkout-session', {
+        items,
+      });
+
+      // Redirect the user to Stripe Checkout
+      const { id } = response.data;
+      window.location = `https://checkout.stripe.com/pay/${id}`;
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage(error.response ? error.response.data.error.message : error.message);
+    }
+  };
 
   return (
     <>
@@ -113,16 +134,12 @@ function Cart() {
             </div>
             {cartItems.length >= 1 && (
               <div className="checkout">
-                <div> </div>
                 <div className="flex h-20 pt-2 mt-2 border-t-2 justify-between">
                   <h3>Subtotal:</h3>
                   <h3>${totalPrice}</h3>
                 </div>
                 <div className="btn-container sticky bottom-10 text-center">
-                  <button
-                    onClick={handleCheckout}
-                    className="btn border-2 px-6 rounded-3xl text-text bg-btn"
-                  >
+                  <button onClick={handleCheckout} className="btn border-2 px-6 rounded-3xl text-text bg-btn">
                     Pay With Stripe
                   </button>
                 </div>

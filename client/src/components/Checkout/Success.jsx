@@ -1,10 +1,10 @@
 //AFTER FORM IS SUBMITED AND PAYMENT IS PROCESSED SEND EMAIL
-function Payment() {
+function Success() {
     return (
       <>
-        <h1>Payment</h1>
+        <h1>Success</h1>
       </>
     );
   }
   
-  export default Payment;
+  export default Success;
