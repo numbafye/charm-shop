@@ -94,7 +94,7 @@ function Cart() {
               <div className="product-container">
                 {cartItems.map((item) => (
                   <div
-                    className="product border p-3 rounded-md shadow-md pb-2"
+                    className="product px-3 rounded-md shadow-md pb-2"
                     key={item._id}
                   >
                     <img

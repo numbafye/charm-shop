@@ -1,20 +1,20 @@
-import { Link as RouterLink } from "react-router-dom"; // Alias for react-router-dom Link
+import { useNavigate } from 'react-router-dom';
 
-// eslint-disable-next-line react/prop-types
 function MenuItems() {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
-    <ul className="hamburger-items show-menu sm:gap-10 gap-32" id="menu">
-      <RouterLink to="/">
-        <li className="h-40 w-full pt-14">Home</li>
-      </RouterLink>
-      <RouterLink to="/products">
-        <li className="h-40 w-full pt-14">Shop</li>
-      </RouterLink>
-      <RouterLink to="/?scrollTo=contact">
-        <li className="h-40 w-full pt-14">Contact</li>
-      </RouterLink>
+    <ul className="hamburger-items show-menu sm:gap-10 gap-32 overflow-auto">
+      <li className="h-40 w-full pt-14" onMouseDown={() => handleNavigation('/')}>Home</li>
+      <li className="h-40 w-full pt-14" onMouseDown={() => handleNavigation('/products')}>Shop</li>
+      <li className="h-40 w-full pt-14" onMouseDown={() => handleNavigation('/?scrollTo=contact')}>Contact</li>
     </ul>
   );
 }
 
 export default MenuItems;
+

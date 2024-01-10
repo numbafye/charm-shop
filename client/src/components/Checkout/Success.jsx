@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Success() {
   const [sessionDetails, setSessionDetails] = useState(null);
@@ -30,12 +31,20 @@ function Success() {
   }
 
   return (
-    <div>
+    <>
+      <Link to={"/"}>
+        <div className="flex sticky bg-text top-0">
+          <span className="">
+            <box-icon name="chevron-left"></box-icon>{" "}
+          </span>
+          <h2 className="w-full">GO HOME</h2>
+        </div>
+      </Link>
       <h2>Payment Success</h2>
       {/* Display session details */}
       <p>Payment ID: {sessionDetails.payment_intent}</p>
       {/* Add more details as needed */}
-    </div>
+    </>
   );
 }
 

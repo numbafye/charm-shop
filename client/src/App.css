@@ -308,7 +308,7 @@ input {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 35px;
   transition: transform 0.3s ease;
   font-size: 1.3em;
 }
@@ -377,6 +377,6 @@ input {
 /* ! PRODUCT */
 
 .product {
-  border-style: outset;
   margin: 0.5em;
+  border: inset 1px rgb(0, 0, 0, 0.15);
 }
