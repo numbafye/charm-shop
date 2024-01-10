@@ -1,7 +1,7 @@
 import { useCart } from "../CartContext";
 import { useRef, useState, useEffect } from "react";
 import useOutsideClick from "../components/hook/useOutsideClick";
-import axios from 'axios'
+import axios from "axios";
 
 function Cart() {
   const cartRef = useRef();
@@ -38,7 +38,7 @@ function Cart() {
       // Create a list of items for checkout
       const items = cartItems.map((item) => ({
         price_data: {
-          currency: 'usd',
+          currency: "usd",
           product_data: {
             name: item.name,
           },
@@ -48,16 +48,24 @@ function Cart() {
       }));
 
       // Call your backend to create the Checkout Session
-      const response = await axios.post('http://localhost:3001/stripe/create-checkout-session', {
-        items,
-      });
+      const response = await axios.post(
+        "http://localhost:4242/stripe/create-checkout-session",
+        {
+          items,
+        }
+      );
 
       // Redirect the user to Stripe Checkout
-      const { id } = response.data;
-      window.location = `https://checkout.stripe.com/pay/${id}`;
+      const checkoutSessionUrl = response.data.url;
+      window.location = checkoutSessionUrl;
     } catch (error) {
-      console.error('Error:', error);
-      setMessage(error.response ? error.response.data.error.message : error.message);
+      console.error("Error:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        setMessage(error.response.data.error.message);
+      } else {
+        setMessage("An error occurred");
+      }
     }
   };
 
@@ -139,7 +147,10 @@ function Cart() {
                   <h3>${totalPrice}</h3>
                 </div>
                 <div className="btn-container sticky bottom-10 text-center">
-                  <button onClick={handleCheckout} className="btn border-2 px-6 rounded-3xl text-text bg-btn">
+                  <button
+                    onClick={handleCheckout}
+                    className="btn border-2 px-6 rounded-3xl text-text bg-btn"
+                  >
                     Pay With Stripe
                   </button>
                 </div>

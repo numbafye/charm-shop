@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to my e-commerce site!");
 });
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
