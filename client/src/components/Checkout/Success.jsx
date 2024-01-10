@@ -1,4 +1,4 @@
-function Succes () {
+function Success () {
     return ( 
         <>
         <p>YOU BOUGHT THE THINGS! SUCKA</p>
@@ -6,4 +6,4 @@ function Succes () {
      );
 }
 
-export default Succes ;
+export default Success ;
