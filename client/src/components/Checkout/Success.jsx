@@ -32,18 +32,23 @@ function Success() {
 
   return (
     <>
-      <Link to={"/"}>
-        <div className="flex sticky bg-text top-0">
-          <span className="">
-            <box-icon name="chevron-left"></box-icon>{" "}
-          </span>
-          <h2 className="w-full">GO HOME</h2>
-        </div>
-      </Link>
-      <h2>Payment Success</h2>
+      <img
+        className="w-40 mx-auto"
+        src="./src/assets/Green-Check-Mark-PNG-Image.png"
+        alt="green-check"
+      />
       {/* Display session details */}
-      <p>Payment ID: {sessionDetails.payment_intent}</p>
-      {/* Add more details as needed */}
+      <div className="SuccessContainer p-5 text-center leading-7">
+        <div className="order-details">
+          <p>Thank you, {sessionDetails.customer_details.name}!</p>
+          <p className="font-bold text-lg">Your Order is Confirmed</p>
+          <p>Payment ID: {sessionDetails.payment_intent}</p>
+          <p>We&apos;ll send you a shipping confirmation email shortly.</p>
+        </div>
+        <Link to={"/"}>
+          <button className="mt-5 w-1/2 border">GO HOME</button>
+        </Link>
+      </div>
     </>
   );
 }

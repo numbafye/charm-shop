@@ -1,10 +1,10 @@
 import { Link as RouterLink } from "react-router-dom";
 
-function Footer() {
+function Foot() {
   return (
     <>
       <hr />
-      <footer className="bg-gray-800 text-white py-6">
+      <div className="bg-gray-800 py-6">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
@@ -57,9 +57,9 @@ function Footer() {
             </div>
           </div>
         </div>
-      </footer>
+      </div>
     </>
   );
 }
 
-export default Footer;
+export default Foot;

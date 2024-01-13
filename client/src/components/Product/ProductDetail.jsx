@@ -3,8 +3,9 @@ import sanityClient from "../../../charmecom/Client";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../CartContext";
 import Carousel from "../../components/Common/Carousel";
-import Footer from "../Footer/Footer";
+import Foot from "../Footer/Footer";
 import Navbar from "../../components/Common/Navbar";
+import AlwaysOpenExample from "./ProductAccordion";
 
 function ProductDetail() {
   const { decQty, incQty, qty, onAdd, resetQty } = useCart();
@@ -32,7 +33,7 @@ function ProductDetail() {
       )
       .then((data) => setProduct(data[0]))
       .catch(console.error);
-  }, [id]);
+  }, [id, resetQty]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -63,11 +64,11 @@ function ProductDetail() {
       >
         ADD TO CART
       </button>
-      <div className="description">
-        <p>{product.details}</p>
+      <div className="description mt-2">
+        <AlwaysOpenExample product={product} />
       </div>
       <Carousel />
-      <Footer />
+      <Foot />
     </>
   );
 }
