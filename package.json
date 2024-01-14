@@ -8,6 +8,10 @@
     "start": "node server", 
     "heroku-postbuild": "cd client && npm install && npm run build" 
   },
+  "engines": {
+    "node": "18.12.1" 
+  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/numbafye/charm-shop.git"
@@ -19,4 +23,5 @@
     "url": "https://github.com/numbafye/charm-shop/issues"
   },
   "homepage": "https://github.com/numbafye/charm-shop#readme"
+  
 }
