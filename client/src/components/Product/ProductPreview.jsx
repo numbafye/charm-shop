@@ -1,6 +1,6 @@
 function ProductPreview() {
     return ( <>
-    <div>NEW ARRIVAL PRODUCTS</div>
+    <div className="text-center">NEW ARRIVAL PRODUCTS PENDING...</div>
     </> );
 }
 

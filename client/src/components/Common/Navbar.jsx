@@ -51,16 +51,16 @@ function Navbar() {
             id="menu"
           >
             <RouterLink to="/" onClick={() => setMenuOpen(false)}>
-              <li className=" h-9 w-20">Home</li>
+              <li className=" h-7 w-20">Home</li>
             </RouterLink>
             <RouterLink to="/products" onClick={() => setMenuOpen(false)}>
-              <li className=" h-9 w-20">Shop</li>
+              <li className=" h-7 w-20">Shop</li>
             </RouterLink>
             <RouterLink
               to="/?scrollTo=contact"
               onClick={() => setMenuOpen(false)}
             >
-              <li className=" h-9 w-20">Contact</li>
+              <li className=" h-7 w-20">Contact</li>
             </RouterLink>
           </ul>
         </div>

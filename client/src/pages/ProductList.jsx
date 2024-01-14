@@ -5,7 +5,7 @@ function ProductList() {
   return (
     <div>
       <Navbar />
-      <h1>SHOP ALL</h1>
+      <h1 className="text-center mt-5">SHOP ALL</h1>
       <div className="m-10">
         <ProductCard />
       </div>
