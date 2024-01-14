@@ -15,7 +15,7 @@ function CartIcon() {
         <span className="cart-counter bg-accent">{totalQuantities}</span>
       )}
 
-      {(isCartVisible) && <Cart />}
+      {isCartVisible && <Cart />}
     </div>
   );
 }

@@ -33,7 +33,7 @@ function ProductDetail() {
       )
       .then((data) => setProduct(data[0]))
       .catch(console.error);
-  }, [id, resetQty]);
+  }, [id]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -42,7 +42,7 @@ function ProductDetail() {
   return (
     <>
       <Navbar />
-      <div className="border-2">
+      <div className="text-center">
         <img
           src={product.image.url}
           alt={product.name}
@@ -53,14 +53,14 @@ function ProductDetail() {
           <p>${product.price}</p>
         </b>
       </div>
-      <div className="qtyBtns flex justify-evenly border-2 w-32">
-        <button onClick={decQty}>-</button>
-        <span>{qty}</span>
-        <button onClick={incQty}>+</button>
+      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-96">
+        <button className="w-1/3" onClick={decQty}>-</button>
+        <p className="w-1/3">{qty}</p>
+        <button className="w-1/3" onClick={incQty}>+</button>
       </div>
       <button
         onClick={() => onAdd(product, qty)}
-        className=" text-text bg-btn p-1 w-52 border-2"
+        className=" text-text bg-btn p-1 w-full border-2 mb-2"
       >
         ADD TO CART
       </button>

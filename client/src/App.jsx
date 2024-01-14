@@ -11,8 +11,8 @@ import Success from "./components/Checkout/Success";
 
 function App() {
   return (
-    <Router>
-      <CartProvider>
+    <CartProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductList />} />
@@ -20,8 +20,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>
-      </CartProvider>
-    </Router>
+      </Router>
+    </CartProvider>
   );
 }
 

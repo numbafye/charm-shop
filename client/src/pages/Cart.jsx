@@ -128,7 +128,6 @@ function Cart() {
                           +
                         </button>
                       </div>
-                      <div className=""></div>
                     </div>
                     <button
                       className="w-full remove-item text-xs mt-5 "
