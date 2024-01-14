@@ -53,7 +53,7 @@ function ProductDetail() {
           <p>${product.price}</p>
         </b>
       </div>
-      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-96">
+      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-50">
         <button className="w-1/3" onClick={decQty}>-</button>
         <p className="w-1/3">{qty}</p>
         <button className="w-1/3" onClick={incQty}>+</button>
