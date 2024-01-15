@@ -16,9 +16,7 @@ function Success() {
   const fetchSessionDetails = async (sessionId) => {
     try {
       // In your React component
-      const response = await axios.get(
-        `http://localhost:4242/stripe/session/${sessionId}`
-      );
+      const response = await axios.get(`/stripe/session/${sessionId}`);
 
       setSessionDetails(response.data);
     } catch (error) {

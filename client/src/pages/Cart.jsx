@@ -48,12 +48,9 @@ function Cart() {
       }));
 
       // Call your backend to create the Checkout Session
-      const response = await axios.post(
-        "/stripe/create-checkout-session",
-        {
-          items,
-        }
-      );
+      const response = await axios.post("/stripe/create-checkout-session", {
+        items,
+      });
 
       // Redirect the user to Stripe Checkout
       const checkoutSessionUrl = response.data.url;
