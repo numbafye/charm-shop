@@ -7,7 +7,10 @@ const path = require("path"); // Import the path module
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://charm-shop-be3df459128d.herokuapp.com"
+}));
+
 app.use(bodyParser.json());
 
 app.use("/stripe", stripeRoutes);

@@ -49,7 +49,7 @@ function Cart() {
 
       // Call your backend to create the Checkout Session
       const response = await axios.post(
-        "http://localhost:4242/stripe/create-checkout-session",
+        "/stripe/create-checkout-session",
         {
           items,
         }
