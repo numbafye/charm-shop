@@ -34,7 +34,7 @@ function Success() {
     <>
       <img
         className="w-40 mx-auto"
-        src="./src/assets/Green-Check-Mark-PNG-Image.png"
+        src="../assets/Green-Check-Mark-PNG-Image.png"
         alt="green-check"
       />
       {/* Display session details */}
