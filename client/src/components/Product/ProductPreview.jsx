@@ -1,7 +1,9 @@
 function ProductPreview() {
-    return ( <>
-    <div className="text-center">NEW ARRIVAL PRODUCTS PENDING...</div>
-    </> );
+  return (
+    <>
+      <div className="text-center">NEW ARRIVALS COMING SOON</div>
+    </>
+  );
 }
 
 export default ProductPreview;
