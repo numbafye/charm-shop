@@ -42,7 +42,7 @@ function Cart() {
           product_data: {
             name: item.name,
           },
-          unit_amount: item.price * 100, // Stripe expects the amount in cents
+          unit_amount: item.price * 100, 
         },
         quantity: item.quantity,
       }));
