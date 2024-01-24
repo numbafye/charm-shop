@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
@@ -9,6 +9,29 @@ export const CartProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
+
+  // Load cart items from storage
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  //update local storage when items change
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    const newTotalQuantities = cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    const newTotalPrice = cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setTotalQuantities(newTotalQuantities);
+    setTotalPrice(newTotalPrice);
+  }, [cartItems]);
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(

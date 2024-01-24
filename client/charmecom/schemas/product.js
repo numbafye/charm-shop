@@ -35,5 +35,15 @@ export default {
       title: 'Details',
       type: 'string',
     },
+    {
+      name: 'createdAt',
+      title: 'Created At',
+      type: 'datetime',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        timeFormat: 'HH:mm',
+        calendarTodayLabel: 'Today',
+      },
+    },
   ],
 }

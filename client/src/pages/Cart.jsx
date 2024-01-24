@@ -145,7 +145,7 @@ function Cart() {
                 <div className="btn-container sticky bottom-10 text-center">
                   <button
                     onClick={handleCheckout}
-                    className="btn border-2 px-6 rounded-3xl text-text bg-btn"
+                    className="px-7 py-2 border-2 rounded-3xl text-text bg-btn"
                   >
                     Pay With Stripe
                   </button>
