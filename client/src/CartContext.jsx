@@ -20,6 +20,7 @@ export const CartProvider = ({ children }) => {
 
   //update local storage when items change
   useEffect(() => {
+    console.log("Cart Items Updated:", cartItems);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     const newTotalQuantities = cartItems.reduce(
       (total, item) => total + item.quantity,
@@ -145,6 +146,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cartItems,
+        setCartItems,
         isCartVisible,
         toggleCart,
         totalPrice,

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useCart } from "../../CartContext";
 
 function Success() {
+  const { setCartItems } = useCart();
   const [sessionDetails, setSessionDetails] = useState(null);
 
   useEffect(() => {
@@ -10,8 +12,11 @@ function Success() {
     const sessionId = queryParams.get("session_id");
     if (sessionId) {
       fetchSessionDetails(sessionId);
+      setCartItems([]); // Reset the cart items
+      console.log("Cart reset in Success component");
+      localStorage.removeItem("cartItems"); // Clear cart items from local storage
     }
-  }, []);
+  }, [setCartItems]);
 
   const fetchSessionDetails = async (sessionId) => {
     try {
