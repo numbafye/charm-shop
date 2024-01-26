@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import sanityClient from "../../../charmecom/Client";
 import Slider from "react-slick";
+import ProductCard from "../Product/ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -51,6 +52,7 @@ function Carousel() {
       // FIX IMAGE QUERY
       .fetch(
         `*[_type == "product"]{
+          _id,
           "image": image.asset-> {
             _id,
             url
@@ -65,27 +67,15 @@ function Carousel() {
     [];
 
   return (
-    <>
+ <>
       <h2 className="text-center">You Might Also Like</h2>
       <div className="carousel-container p-10">
-        <Slider {...settings} className="">
-          {" "}
-          {products &&
-            products.map((products, index) => (
-              <div key={index} className="carousel-slide">
-                <div className="flex justify-center items-center">
-                  {products.image && (
-                    <img
-                      className="h-32 p-2 w-40"
-                      src={products.image.url}
-                      alt={products.name}
-                    />
-                  )}
-                </div>
-                <div>{products.name}</div>
-                <div>{products.price}</div>
-              </div>
-            ))}
+        <Slider {...settings}>
+          {products && products.map((product, index) => (
+            <div key={index} className="carousel-slide">
+              <ProductCard product={product} />
+            </div>
+          ))}
         </Slider>
       </div>
     </>
@@ -94,27 +84,4 @@ function Carousel() {
 
 export default Carousel;
 
-//Mock data in carousel function
-{
-  /* <div className="carousel-slide">
-            <img
-              src="src\assets\charm2.jpg"
-              alt="Image 1"
-              className="center-image"
-            />
-          </div>
-          <div className="carousel-slide">
-            <img
-              src="src\assets\charm5.jpg"
-              alt="Image 2"
-              className="center-image"
-            />
-          </div>
-          <div className="carousel-slide">
-            <img
-              src="src\assets\charm6.jpg"
-              alt="Image 3"
-              className="center-image"
-            />
-          </div> */
-}
+

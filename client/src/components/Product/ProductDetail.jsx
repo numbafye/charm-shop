@@ -49,21 +49,27 @@ function ProductDetail() {
           className="p-0 h-96 w-full object-contain"
         />
         <b>
-          <h1>{product.name}</h1>
-          <p>${product.price}</p>
+          <h1 className="text-3xl px-2">{product.name}</h1>
+          <p className="text-lg">${product.price}</p>
         </b>
       </div>
-      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-50">
-        <button className="w-1/3" onClick={decQty}>-</button>
+      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-56">
+        <button className="w-1/3" onClick={decQty}>
+          -
+        </button>
         <p className="w-1/3">{qty}</p>
-        <button className="w-1/3" onClick={incQty}>+</button>
+        <button className="w-1/3" onClick={incQty}>
+          +
+        </button>
       </div>
-      <button
-        onClick={() => onAdd(product, qty)}
-        className=" text-text bg-btn p-1 w-full border-2 mb-2"
-      >
-        ADD TO CART
-      </button>
+      <div className="mx-auto text-center">
+        <button
+          onClick={() => onAdd(product, qty)}
+          className=" text-text bg-btn p-1 w-64 border-2 m-2"
+        >
+          ADD TO CART
+        </button>
+      </div>
       <div className="description mt-2">
         <AlwaysOpenExample product={product} />
       </div>

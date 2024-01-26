@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div >
+    < >
       {product && (
-        <Link to={`/products/${product._id}`} className="rounded-sm hover:ring-1 ring-accent">
+        <Link to={`/products/${product._id}`} className="rounded-sm hover:ring-1 ring-accent" onClick={handleClick}>
           <div className="h-48 overflow-hidden">
             {product.image && (
               <img
@@ -22,7 +26,7 @@ function ProductCard({ product }) {
           </div>
         </Link>
       )}
-    </div>
+    </>
   );
 }
 

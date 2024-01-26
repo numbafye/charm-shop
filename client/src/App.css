@@ -380,3 +380,31 @@ input {
   margin: 0.5em;
   border: inset 1px rgb(0, 0, 0, 0.15);
 }
+
+/* ! ACCORDIAN  */
+.accordion {
+  margin-block: 2em;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  border-color: inherit;
+  background-color: purple;
+  color: white;
+  box-shadow: none;
+}
+
+.accordion-header p {
+  text-align: center;
+  width: 100%;
+}
+
+.accordion-body {
+  border-top: 0.01em rgb(198, 198, 198) solid;
+  padding: 1.5em;
+}
