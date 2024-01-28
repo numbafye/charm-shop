@@ -30,8 +30,8 @@ function Home() {
       <Navbar />
       <Header />
       <ProductPreview />
-      <Element name="about">
-        <section id="about" className="p-7 rounded-sm">
+      <Element name="about" id="about">
+        <section className="p-7 rounded-sm">
           <h2 className="text-center">About</h2>
           <p className="text-sm">
             {/* 150 */}
@@ -54,51 +54,6 @@ function Home() {
             vero? Est voluptatum nobis recusandae? Similique voluptas magnam
             sint, est ad repellendus quas quod amet numquam.
           </p>
-        </section>
-      </Element>
-      <Element name="contact">
-        <section className="m-10 bg-blue-700" id="contact">
-          <h2 className="text-center">Contact Me</h2>
-          <form
-            target="_blank"
-            action="https://formsubmit.co/your@email.com"
-            method="POST"
-          >
-            <div className="form-group">
-              <div className="form-row">
-                <div className="col">
-                  <input
-                    type="text"
-                    name="name"
-                    className="form-input"
-                    placeholder="Full Name"
-                    required
-                  />
-                </div>
-                <div className="col">
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-input"
-                    placeholder="Email Address"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="form-group">
-              <textarea
-                placeholder="Your Message"
-                className="form-input"
-                name="message"
-                rows="10"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" className="form-btn">
-              Send
-            </button>
-          </form>
         </section>
       </Element>
       <Footer />

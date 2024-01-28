@@ -53,7 +53,7 @@ function ProductDetail() {
           <p className="text-lg">${product.price}</p>
         </b>
       </div>
-      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-56">
+      <div className="qtyBtns flex flex-row mx-auto text-center my-3 border-2 w-64">
         <button className="w-1/3" onClick={decQty}>
           -
         </button>

@@ -5,7 +5,7 @@ function CartIcon() {
   const { toggleCart, isCartVisible, totalQuantities } = useCart();
 
   return (
-    <div className="mr-3 mt-1 -z-50">
+    <div className="mr-3 mt-1 -z-50 md:mr-10">
       <box-icon
         onClick={toggleCart}
         type="solid"

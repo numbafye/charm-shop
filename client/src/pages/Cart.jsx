@@ -95,18 +95,18 @@ function Cart() {
                     key={item._id}
                   >
                     <img
-                      className="mt-3"
+                      className="mt-3 mx-auto"
                       src={item.image.url}
                       alt={item.name}
                     />
-                    <div className=" text-center mb-5">
-                      <b className="flex justify-between">
-                        <h3 className="text-left">{item.name}</h3>
-                        <p className="text-right">${item.price}</p>
+                    <div className=" text-center my-3">
+                      <b className="">
+                        <h3 className="text-xl text-center w-full md:text-3xl">{item.name}</h3>
                       </b>
+                        <p className="text-lg md:text-right md:text-2xl">${item.price}</p>
                     </div>
                     <div className="flex flex-row justify-between text-center mt-2">
-                      <div className="qtyBtns flex justify-evenly border-2 w-full text-lg">
+                      <div className="qtyBtns flex justify-evenly border-2 w-72 mx-auto text-lg md:text-3xl">
                         <button
                           className=" w-full"
                           onClick={() =>
@@ -130,7 +130,7 @@ function Cart() {
                       className="w-full remove-item text-xs mt-5 "
                       onClick={() => onRemove(item._id, "remove")}
                     >
-                      <b className="border-b">REMOVE </b>
+                      <b className="border-b md:text-lg">REMOVE </b>
                     </button>
                   </div>
                 ))}
@@ -138,7 +138,7 @@ function Cart() {
             </div>
             {cartItems.length >= 1 && (
               <div className="checkout">
-                <div className="flex h-20 pt-2 mt-2 border-t-2 justify-between">
+                <div className="flex h-20 pt-2 mt-2 border-t-2 justify-between md:text-3xl">
                   <h3>Subtotal:</h3>
                   <h3>${totalPrice}</h3>
                 </div>

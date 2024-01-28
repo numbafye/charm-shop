@@ -1,20 +1,20 @@
 import { Link as RouterLink } from "react-router-dom";
 
-function Foot() {
+function Footer() {
   return (
     <>
       <hr />
       <div className="bg-gray-800 py-6">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
+        <div className="mx-auto">
+          <div className="flex flex-col md:flex-row justify-around">
+            <div className="mb-4 md:mb-0 text-center">
               <h2 className="text-2xl font-bold">Company Name</h2>
               <p className="text-sm">
                 A brief description of your company or website.
               </p>
             </div>
 
-            <div className="sm:flex md:flex space-x-20">
+            <div className="sm:flex md:flex-row flex-nowrap justify-around">
               <div className="mb-4 md:mb-0">
                 <h3 className="text-lg font-semibold">Quick Links</h3>
                 <ul className="text-sm">
@@ -62,4 +62,4 @@ function Foot() {
   );
 }
 
-export default Foot;
+export default Footer;

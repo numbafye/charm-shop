@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import sanityClient from "../../charmecom/Client"; // Adjust the import path as necessary
 import Navbar from "../components/Common/Navbar";
 import ProductCard from "../components/Product/ProductCard";
+import Footer from "../components/Footer/Footer";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -35,7 +36,9 @@ function ProductList() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
+
   );
 }
 

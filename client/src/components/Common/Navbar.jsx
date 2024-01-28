@@ -56,15 +56,12 @@ function Navbar() {
             <RouterLink to="/products" onClick={() => setMenuOpen(false)}>
               <li className=" h-7 w-20">Shop</li>
             </RouterLink>
-            <RouterLink
-              to="/?scrollTo=contact"
-              onClick={() => setMenuOpen(false)}
-            >
+            <RouterLink to="/contact" onClick={() => setMenuOpen(false)}>
               <li className=" h-7 w-20">Contact</li>
             </RouterLink>
           </ul>
         </div>
-        <CartIcon/>
+        <CartIcon />
       </div>
       <div className={`show-menu ${menuOpen ? "active" : ""}`}>
         <MenuItems closeMenu={() => setMenuOpen(false)} />{" "}
