@@ -22,7 +22,7 @@ function Footer() {
                     <RouterLink to="/?scrollTo=about">About</RouterLink>
                   </li>
                   <li>
-                    <a href="#">Contact Us</a>
+                    <RouterLink to="/contact">Contact Us</RouterLink>
                   </li>
                 </ul>
               </div>
