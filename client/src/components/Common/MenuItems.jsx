@@ -8,7 +8,7 @@ function MenuItems() {
   };
 
   return (
-    <ul className="show-menu sm:gap-10 gap-20 overflow-auto">
+    <ul className="show-menu sm:gap-10 gap-20 overflow-y-scroll">
       <li className="h-40 w-full pt-14" onMouseDown={() => handleNavigation('/')}>Home</li>
       <li className="h-40 w-full pt-14" onMouseDown={() => handleNavigation('/products')}>Shop</li>
       <li className="h-40 w-full pt-14" onMouseDown={() => handleNavigation('/contact')}>Contact</li>
