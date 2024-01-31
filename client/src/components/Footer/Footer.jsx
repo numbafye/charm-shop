@@ -8,7 +8,7 @@ function Footer() {
         <div className="mx-auto">
           <div className="flex flex-col md:flex-row justify-around">
             <div className="mb-4 md:mb-0 text-center">
-              <h2 className="text-2xl font-bold">Company Name</h2>
+              <h2 className="text-2xl font-bold">Alpha Nails</h2>
               <p className="text-sm">
                 A brief description of your company or website.
               </p>
