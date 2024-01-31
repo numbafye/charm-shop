@@ -10,7 +10,10 @@ function CartIcon() {
         onClick={toggleCart}
         type="solid"
         name="shopping-bag"
-      ></box-icon>
+      >
+        
+      </box-icon>
+
       {totalQuantities > 0 && (
         <span className="cart-counter bg-accent">{totalQuantities}</span>
       )}

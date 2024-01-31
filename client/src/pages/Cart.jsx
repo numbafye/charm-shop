@@ -73,7 +73,7 @@ function Cart() {
           <p>{message}</p>
         </section>
       ) : (
-        <div className="cart-wrapper" ref={cartRef}>
+        <div ref={cartRef}>
           <div className="cart-container">
             <div className="flex sticky bg-text top-0">
               <span className="absolute" onClick={toggleCart}>
@@ -83,30 +83,30 @@ function Cart() {
             </div>
             <div className="cart-content">
               {cartItems.length < 1 && (
-                <div className="empty-cart">
+                <div className="empty-cart mt-10 text-center">
                   <h3>Your shopping bag is empty</h3>
                 </div>
               )}
 
-              <div className="product-container">
+              <div className="px-2 md:mx-16 my-4">
                 {cartItems.map((item) => (
                   <div
-                    className="product px-3 rounded-md shadow-md pb-2"
+                    className="product px-3 rounded-md shadow-md pb-2 md:w-full md:mx-auto mt-3"
                     key={item._id}
                   >
                     <img
-                      className="mt-3 mx-auto"
+                      className="mt-3 mx-auto sm:object-contain md:object-scale-down  md:px-3 md:h-40"
                       src={item.image.url}
                       alt={item.name}
                     />
-                    <div className=" text-center my-3">
-                      <b className="">
-                        <h3 className="text-xl text-center w-full md:text-3xl">{item.name}</h3>
+                    <div className=" text-center md:my-3">
+                      <b>
+                        <h1 className="text-lg text-center w-full md:text-2xl">{item.name}</h1>
                       </b>
-                        <p className="text-lg md:text-right md:text-2xl">${item.price}</p>
+                        <p className="text-lg md:text-2xl">${item.price}</p>
                     </div>
                     <div className="flex flex-row justify-between text-center mt-2">
-                      <div className="qtyBtns flex justify-evenly border-2 w-72 mx-auto text-lg md:text-3xl">
+                      <div className="flex justify-evenly border-2 w-40 mx-auto text-lg md:text-xl">
                         <button
                           className=" w-full"
                           onClick={() =>
@@ -127,22 +127,22 @@ function Cart() {
                       </div>
                     </div>
                     <button
-                      className="w-full remove-item text-xs mt-5 "
+                      className="w-full text-xs sm:mt-3 md:mt-4"
                       onClick={() => onRemove(item._id, "remove")}
                     >
-                      <b className="border-b md:text-lg">REMOVE </b>
+                      <b className="border-b md:text-base">REMOVE </b>
                     </button>
                   </div>
                 ))}
               </div>
             </div>
             {cartItems.length >= 1 && (
-              <div className="checkout">
-                <div className="flex h-20 pt-2 mt-2 border-t-2 justify-between md:text-3xl">
+              <div className="checkout font-semibold">
+                <div className=" flex h-20 pt-2 mt-2 border-t-2 justify-between md:text-xl">
                   <h3>Subtotal:</h3>
                   <h3>${totalPrice}</h3>
                 </div>
-                <div className="btn-container sticky bottom-10 text-center">
+                <div className="sticky bottom-10 text-center">
                   <button
                     onClick={handleCheckout}
                     className="px-7 py-2 border-2 rounded-3xl text-text bg-btn"
