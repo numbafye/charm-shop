@@ -129,10 +129,36 @@ export default {
     {
       name: 'color',
       title: 'Color',
-      type: 'color',
-      options: {
-        disableAlpha: true,
-      },
+      type: 'array',
+      of: [
+        {
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Red', value: 'red'},
+              {title: 'Blue', value: 'blue'},
+              {title: 'Green', value: 'green'},
+              {title: 'Yellow', value: 'yellow'},
+              {title: 'Orange', value: 'orange'},
+              {title: 'Purple', value: 'purple'},
+              {title: 'Pink', value: 'pink'},
+              {title: 'Black', value: 'black'},
+              {title: 'White', value: 'white'},
+              {title: 'Grey', value: 'grey'},
+              {title: 'Brown', value: 'brown'},
+              {title: 'Beige', value: 'beige'},
+              {title: 'Teal', value: 'teal'},
+              {title: 'Navy', value: 'navy'},
+              {title: 'Maroon', value: 'maroon'},
+              {title: 'Gold', value: 'gold'},
+              {title: 'Silver', value: 'silver'},
+              {title: 'Bronze', value: 'bronze'},
+              {title: 'Copper', value: 'copper'},
+              {title: 'Transparent', value: 'transparent'},
+            ],
+          },
+        },
+      ],
     },
   ],
 }
