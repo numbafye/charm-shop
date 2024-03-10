@@ -33,7 +33,8 @@ function ProductList() {
       <Navbar />
       <h1 className="text-center mt-5 fw-bold">BROWSE CATALOG</h1>
       <div className="w-full text-center">
-        <button className="w-1/2 mt-4 border">Filter & Sort</button>
+        <button className="w-1/2 mt-4 border">Filter & Sort</button> 
+        {/* Make Button slide the menu out for filtering */}
       </div>
       <FilterBtn />
       <div className="m-10 ">
