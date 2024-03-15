@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import sanityClient from "../../charmecom/Client"; // Adjust the import path as necessary
+import sanityClient from "../../charmecom/Client";
 import Navbar from "../components/Common/Navbar";
 import ProductCard from "../components/Product/ProductCard";
 import Footer from "../components/Footer/Footer";
@@ -17,9 +17,9 @@ function ProductList() {
     let baseQuery = `*[_type == "product"]`;
     const conditions = [];
 
-    // Color filter example
-    if (filters.color) {
-      conditions.push(`"${filters.color}" in color`);
+    // Color filter
+    if (filters.selectedColor) {
+      conditions.push(`"${filters.selectedColor}" in color[]`);
     }
 
     // Add conditions for other filters as needed
@@ -35,10 +35,9 @@ function ProductList() {
     name,
     price,
     details,
-    // Include other fields as necessary
+    color,
   }`;
 
-    // Sorting (if applicable)
     if (filters.sortOrder) {
       fullQuery += ` | order(price ${filters.sortOrder})`;
     }

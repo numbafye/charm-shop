@@ -106,7 +106,7 @@ export default {
     },
 
     {
-      name: 'gemstones',
+      name: 'gemStones',
       title: 'Gemstones',
       type: 'array',
       of: [
