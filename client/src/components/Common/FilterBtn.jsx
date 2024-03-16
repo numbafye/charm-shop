@@ -41,6 +41,25 @@ function FilterBtn({ onApply }) {
     onApply({ ...filters, sortOrder });
   };
 
+  const clearFilters = () => {
+    setFilters({
+      selectedColor: "",
+      selectedTheme: "",
+      selectedGem: "",
+      selectedMetalFinish: "",
+      selectedSize: "",
+    });
+    setSortOrder("");
+    onApply({
+      selectedColor: "",
+      selectedTheme: "",
+      selectedGem: "",
+      selectedMetalFinish: "",
+      selectedSize: "",
+      sortOrder: "",
+    });
+  };
+
   // UNIVERSAL FILTER SELECT FUNCTION
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +73,21 @@ function FilterBtn({ onApply }) {
     <>
       <div className="filter-sort-menu">
         <div className="filter-container">
-          {/* ADD ACCORDION */}
+          <Accordion alwaysOpen>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                <p>Color</p>
+              </Accordion.Header>
+              <Accordion.Body>BODY </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>
+                <p>Metal Finish</p>
+              </Accordion.Header>
+              <Accordion.Body>Lorem ipsum</Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+
           <p>Select Color:</p>
           {colorOptions.map((color) => (
             <label key={color}>
@@ -81,6 +114,9 @@ function FilterBtn({ onApply }) {
         </select>
 
         <div className="text-center">
+          <button className="" onClick={clearFilters}>
+            Clear All
+          </button>
           <button className="p-1 border" onClick={applyFilters}>
             Apply Filters
           </button>
