@@ -13,26 +13,18 @@ function FilterBtn({ onApply }) {
   });
 
   const colorOptions = [
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "orange",
-    "purple",
-    "pink",
-    "black",
-    "white",
-    "grey",
-    "brown",
-    "beige",
-    "teal",
-    "navy",
-    "maroon",
-    "gold",
-    "silver",
-    "bronze",
-    "copper",
-    "transparent",
+    { title: "Red", value: "red" },
+    { title: "Blue", value: "blue" },
+    { title: "Green", value: "green" },
+    { title: "Yellow", value: "yellow" },
+    { title: "Orange", value: "orange" },
+    { title: "Purple", value: "purple" },
+    { title: "Pink", value: "pink" },
+    { title: "Black", value: "black" },
+    { title: "White", value: "white" },
+    { title: "Brown", value: "brown" },
+    { title: "Multi-Color", value: "multiColor" },
+    { title: "Transparent", value: "transparent" },
   ];
 
   const metalOptions = ["gold", "silver", "roseGold", "gunmetal", "other"];
@@ -78,7 +70,20 @@ function FilterBtn({ onApply }) {
               <Accordion.Header>
                 <p>Color</p>
               </Accordion.Header>
-              <Accordion.Body>BODY </Accordion.Body>
+              <Accordion.Body>
+                {colorOptions.map(({ title, value }) => (
+                  <label key={value}>
+                    <input
+                      type="radio"
+                      name="selectedColor"
+                      value={value}
+                      checked={filters.selectedColor === value}
+                      onChange={handleFilterChange}
+                    />
+                    {title}
+                  </label>
+                ))}{" "}
+              </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
               <Accordion.Header>
@@ -87,21 +92,6 @@ function FilterBtn({ onApply }) {
               <Accordion.Body>Lorem ipsum</Accordion.Body>
             </Accordion.Item>
           </Accordion>
-
-          <p>Select Color:</p>
-          {colorOptions.map((color) => (
-            <label key={color}>
-              <input
-                type="radio"
-                name="selectedColor"
-                value={color}
-                checked={filters.selectedColor === color}
-                onChange={handleFilterChange}
-              />
-              {color.charAt(0).toUpperCase() + color.slice(1)}
-            </label>
-          ))}
-          <hr />
         </div>
 
         <select
