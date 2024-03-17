@@ -22,12 +22,50 @@ function FilterBtn({ onApply }) {
     { title: "Pink", value: "pink" },
     { title: "Black", value: "black" },
     { title: "White", value: "white" },
+    { title: "Grey", value: "grey" },
     { title: "Brown", value: "brown" },
-    { title: "Multi-Color", value: "multiColor" },
     { title: "Transparent", value: "transparent" },
+    { title: "Multi-Color", value: "multiColor" },
   ];
 
-  const metalOptions = ["gold", "silver", "roseGold", "gunmetal", "other"];
+  const metalOptions = [
+    { title: "Gold", value: "gold" },
+    { title: "Silver", value: "silver" },
+    { title: "Rose Gold", value: "roseGold" },
+    { title: "Gunmetal", value: "gunmetal" },
+    { title: "Other", value: "other" },
+  ];
+
+  const gemOptions = [
+    { title: "Clear", value: "clear" },
+    { title: "AB", value: "ab" },
+    { title: "Colored", value: "colored" },
+    { title: "Opal", value: "opal" },
+    { title: "Pearl", value: "pearl" },
+    { title: "Swavorski", value: "swavorski" },
+    { title: "Zircon", value: "zircon" },
+  ];
+
+  const sizeOptions = [
+    { title: "Pixie", value: "pixie" },
+    { title: "Small", value: "small" },
+    { title: "Medium", value: "medium" },
+    { title: "Large", value: "large" },
+    { title: "XL", value: "xl" },
+  ];
+
+  const themeOptions = [
+    { title: "Nature", value: "nature" },
+    { title: "Celestial", value: "celestial" },
+    { title: "Barbie", value: "barbie" },
+    { title: "Kawaii", value: "kawaii" },
+    { title: "Holiday", value: "holiday" },
+    { title: "Animals", value: "animals" },
+    { title: "Hello Kitty", value: "helloKitty" },
+    { title: "Dangle", value: "dangle" },
+    { title: "Alphabet", value: "alphabet" },
+    { title: "Miscellaneous", value: "miscellaneous" },
+  ];
 
   const applyFilters = () => {
     onApply({ ...filters, sortOrder });
@@ -82,7 +120,7 @@ function FilterBtn({ onApply }) {
                     />
                     {title}
                   </label>
-                ))}{" "}
+                ))}
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
