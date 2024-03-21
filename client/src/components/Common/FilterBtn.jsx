@@ -71,6 +71,15 @@ function FilterBtn({ onApply }) {
 
   const applyFilters = () => {
     onApply({ ...filters, sortOrder });
+    setFilterOpen(!filterOpen);
+    setFilters({
+      selectedColor: "",
+      selectedTheme: "",
+      selectedGem: "",
+      selectedMetalFinish: "",
+      selectedSize: "",
+    });
+    setSortOrder("");
   };
 
   const clearFilters = () => {
@@ -108,7 +117,9 @@ function FilterBtn({ onApply }) {
   return (
     <div className="filter-sort-menu">
       <div className="w-full text-center">
-        <button className="w-1/2 mt-4 border" onClick={toggleFilter}>Filter & Sort</button>
+        <button className="w-1/2 mt-4 border" onClick={toggleFilter}>
+          Filter & Sort
+        </button>
         {/* Make Button slide the menu out for filtering */}
       </div>
       {filterOpen && (
