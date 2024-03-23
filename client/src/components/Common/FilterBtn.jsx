@@ -2,14 +2,13 @@ import { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 
 function FilterBtn({ onApply }) {
-  const [sortOrder, setSortOrder] = useState("");
-
   const [filters, setFilters] = useState({
     selectedColor: "",
     selectedTheme: "",
     selectedGem: "",
     selectedMetalFinish: "",
     selectedSize: "",
+    sortOrder: "",
   });
 
   const [filterOpen, setFilterOpen] = useState(false);
@@ -70,7 +69,7 @@ function FilterBtn({ onApply }) {
   ];
 
   const applyFilters = () => {
-    onApply({ ...filters, sortOrder });
+    onApply(filters);
     setFilterOpen(!filterOpen);
     setFilters({
       selectedColor: "",
@@ -78,8 +77,8 @@ function FilterBtn({ onApply }) {
       selectedGem: "",
       selectedMetalFinish: "",
       selectedSize: "",
+      sortOrder: "",
     });
-    setSortOrder("");
   };
 
   const clearFilters = () => {
@@ -89,8 +88,8 @@ function FilterBtn({ onApply }) {
       selectedGem: "",
       selectedMetalFinish: "",
       selectedSize: "",
+      sortOrder: "",
     });
-    setSortOrder("");
     onApply({
       selectedColor: "",
       selectedTheme: "",
@@ -99,6 +98,7 @@ function FilterBtn({ onApply }) {
       selectedSize: "",
       sortOrder: "",
     });
+    setFilterOpen(!filterOpen);
   };
 
   // UNIVERSAL FILTER SELECT FUNCTION
@@ -121,127 +121,148 @@ function FilterBtn({ onApply }) {
           Filter & Sort
         </button>
         {/* Make Button slide the menu out for filtering */}
+        {/* make radio type hidden and then add small circle img before text */}
       </div>
       {filterOpen && (
-        <>
-          <div className="filter-container">
-            <Accordion alwaysOpen>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>
-                  <p>Color</p>
-                </Accordion.Header>
-                <Accordion.Body>
-                  {colorOptions.map(({ title, value }) => (
-                    <label key={value}>
-                      <input
-                        type="radio"
-                        name="selectedColor"
-                        value={value}
-                        checked={filters.selectedColor === value}
-                        onChange={handleFilterChange}
-                      />
-                      {title}
-                    </label>
-                  ))}
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>
-                  <p>Metal Finish</p>
-                </Accordion.Header>
-                <Accordion.Body>
-                  {metalOptions.map(({ title, value }) => (
-                    <label key={value}>
-                      <input
-                        type="radio"
-                        name="selectedMetalFinish"
-                        value={value}
-                        checked={filters.selectedMetalFinish === value}
-                        onChange={handleFilterChange}
-                      />
-                      {title}
-                    </label>
-                  ))}
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="2">
-                <Accordion.Header>
-                  <p>Theme</p>
-                </Accordion.Header>
-                <Accordion.Body>
-                  {themeOptions.map(({ title, value }) => (
-                    <label key={value}>
-                      <input
-                        type="radio"
-                        name="selectedTheme"
-                        value={value}
-                        checked={filters.selectedTheme === value}
-                        onChange={handleFilterChange}
-                      />
-                      {title}
-                    </label>
-                  ))}
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="3">
-                <Accordion.Header>
-                  <p>Size</p>
-                </Accordion.Header>
-                <Accordion.Body>
-                  {sizeOptions.map(({ title, value }) => (
-                    <label key={value}>
-                      <input
-                        type="radio"
-                        name="selectedSize"
-                        value={value}
-                        checked={filters.selectedSize === value}
-                        onChange={handleFilterChange}
-                      />
-                      {title}
-                    </label>
-                  ))}
-                </Accordion.Body>
-              </Accordion.Item>
-              <Accordion.Item eventKey="4">
-                <Accordion.Header>
-                  <p>Gemstones</p>
-                </Accordion.Header>
-                <Accordion.Body>
-                  {gemOptions.map(({ title, value }) => (
-                    <label key={value}>
-                      <input
-                        type="radio"
-                        name="selectedGem"
-                        value={value}
-                        checked={filters.selectedGem === value}
-                        onChange={handleFilterChange}
-                      />
-                      {title}
-                    </label>
-                  ))}
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </div>
-
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-          >
-            <option value="">Sort By</option>
-            <option value="asc">Price Low to High</option>
-            <option value="desc">Price High to Low</option>
-          </select>
-
-          <div className="text-center">
-            <button className="" onClick={clearFilters}>
+        <div className={`filter-container ${filterOpen ? "" : "hidden"}`}>
+          <Accordion alwaysOpen className="m-0">
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>
+                <p>Color</p>
+              </Accordion.Header>
+              <Accordion.Body>
+                {colorOptions.map(({ title, value }) => (
+                  <label key={value}>
+                    <input
+                      type="radio"
+                      name="selectedColor"
+                      value={value}
+                      checked={filters.selectedColor === value}
+                      onChange={handleFilterChange}
+                    />
+                    {title}
+                  </label>
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>
+                <p>Metal Finish</p>
+              </Accordion.Header>
+              <Accordion.Body>
+                {metalOptions.map(({ title, value }) => (
+                  <label key={value}>
+                    <input
+                      type="radio"
+                      name="selectedMetalFinish"
+                      value={value}
+                      checked={filters.selectedMetalFinish === value}
+                      onChange={handleFilterChange}
+                    />
+                    {title}
+                  </label>
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>
+                <p>Theme</p>
+              </Accordion.Header>
+              <Accordion.Body>
+                {themeOptions.map(({ title, value }) => (
+                  <label key={value}>
+                    <input
+                      type="radio"
+                      name="selectedTheme"
+                      value={value}
+                      checked={filters.selectedTheme === value}
+                      onChange={handleFilterChange}
+                    />
+                    {title}
+                  </label>
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+              <Accordion.Header>
+                <p>Size</p>
+              </Accordion.Header>
+              <Accordion.Body>
+                {sizeOptions.map(({ title, value }) => (
+                  <label key={value}>
+                    <input
+                      type="radio"
+                      name="selectedSize"
+                      value={value}
+                      checked={filters.selectedSize === value}
+                      onChange={handleFilterChange}
+                    />
+                    {title}
+                  </label>
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="4">
+              <Accordion.Header>
+                <p>Gemstones</p>
+              </Accordion.Header>
+              <Accordion.Body>
+                {gemOptions.map(({ title, value }) => (
+                  <label key={value}>
+                    <input
+                      type="radio"
+                      name="selectedGem"
+                      value={value}
+                      checked={filters.selectedGem === value}
+                      onChange={handleFilterChange}
+                    />
+                    {title}
+                  </label>
+                ))}
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="5">
+              <Accordion.Header>
+                <p>Sort By</p>
+              </Accordion.Header>
+              <Accordion.Body>
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="sortOrder"
+                      value="asc"
+                      checked={filters.sortOrder === "asc"}
+                      onChange={handleFilterChange}
+                    />
+                    Price Low to High
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="sortOrder"
+                      value="desc"
+                      checked={filters.sortOrder === "asc"}
+                      onChange={handleFilterChange}
+                    />
+                    Price High to Low
+                  </label>
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+            <button className="relative top-8 left-12 text-left" onClick={clearFilters}>
               Clear All
             </button>
-            <button className="p-1 border" onClick={applyFilters}>
+          <div className="text-center  bg-text">
+            <button className="p-1 border h-10" onClick={applyFilters}>
               Apply Filters
             </button>
           </div>
-        </>
+          {/* END OF FILTER CONTAINER */}
+        </div>
       )}
     </div>
   );
