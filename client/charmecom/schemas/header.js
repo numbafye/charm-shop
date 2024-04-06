@@ -6,23 +6,16 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'product',
-      title: 'Product',
-      type: 'string',
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: 'desc',
       title: 'Desc',
-      type: 'string',
-    },
-    {
-      name: 'discount',
-      title: 'Discount',
-      type: 'string',
-    },
-    {
-      name: 'saleTime',
-      title: 'SaleTime',
       type: 'string',
     },
   ],

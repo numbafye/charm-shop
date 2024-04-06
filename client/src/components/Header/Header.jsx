@@ -3,19 +3,26 @@ import { useEffect, useState } from "react";
 import sanityClient from "../../../charmecom/Client";
 
 function Header() {
-  const [banner, setBanner] = useState(null);
+  const [bannerData, setBannerData] = useState(null);
+  const [headerData, setHeaderData] = useState(null);
 
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "banner"] {
-          "image": image.asset-> {
-             _id,
-             url
-           },
-         }`
-      )
-      .then((data) => setBanner(data))
+    Promise.all([
+      sanityClient.fetch(`*[_type == "banner"]{  "image": image.asset-> {
+            _id,
+            url
+          },}[0]`),
+      sanityClient.fetch(
+        `*[_type == "header"]{  "image": image.asset-> {
+            _id,
+            url
+          },}[0]`
+      ),
+    ])
+      .then(([bannerResponse, headerResponse]) => {
+        setBannerData(bannerResponse);
+        setHeaderData(headerResponse);
+      })
       .catch(console.error);
   }, []);
 
