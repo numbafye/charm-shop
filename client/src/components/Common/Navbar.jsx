@@ -29,7 +29,7 @@ function Navbar() {
   return (
     <>
       <div
-        className={`navbar-container flex z-50 sticky top-0 h-12 pt-2 w-full`}
+        className={`navbar-container px-1.5 flex z-50 sticky top-0 h-20 pt-2 w-full md:px-7`}
       >
         <div className="hamburger-container">
           <button
