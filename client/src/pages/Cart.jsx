@@ -42,7 +42,7 @@ function Cart() {
           product_data: {
             name: item.name,
           },
-          unit_amount: item.price * 100, 
+          unit_amount: item.price * 100,
         },
         quantity: item.quantity,
       }));
@@ -101,9 +101,11 @@ function Cart() {
                     />
                     <div className=" text-center md:my-3">
                       <b>
-                        <h1 className="text-lg text-center w-full md:text-2xl">{item.name}</h1>
+                        <h1 className="text-lg text-center w-full md:text-2xl">
+                          {item.name}
+                        </h1>
                       </b>
-                        <p className="text-lg md:text-2xl">${item.price}</p>
+                      <p className="text-lg md:text-2xl">${item.price}</p>
                     </div>
                     <div className="flex flex-row justify-between text-center mt-2">
                       <div className="flex justify-evenly border-2 w-40 mx-auto text-lg md:text-xl">

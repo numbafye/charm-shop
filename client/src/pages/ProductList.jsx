@@ -66,7 +66,7 @@ function ProductList() {
   return (
     <div>
       <Navbar />
-      <h1 className="text-center mt-5 fw-bold">BROWSE CATALOG</h1>
+      <h1 className="text-center mt-5 text-btn font-bold text-4xl">BROWSE CATALOG</h1>
      
       <FilterBtn onApply={handleApplyFilters} />
 

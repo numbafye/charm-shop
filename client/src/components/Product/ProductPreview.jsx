@@ -26,7 +26,9 @@ function ProductPreview() {
 
   return (
     <>
-      <div className="text-center mt-4">NEW ARRIVALS</div>
+      <div className="text-center mt-4 text-btn font-bold text-4xl">
+        NEW ARRIVALS
+      </div>
       <div className="m-7">
         <div className="product-card grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {products.map((product) => (
