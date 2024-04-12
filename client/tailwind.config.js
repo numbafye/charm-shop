@@ -18,7 +18,7 @@ export default {
       secondary: "#ffee95",
       accent: "#ff49db",
       text: "#ffffff",
-      btn: "#FF9999",
+      btn: "#ffa4ea",
     },
     extend: {},
   },

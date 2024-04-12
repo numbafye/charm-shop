@@ -11,7 +11,7 @@ function Header() {
       sanityClient.fetch(`*[_type == "banner"]{  "image": image.asset-> {
             _id,
             url
-          },}[0]`),
+          },}[1]`),
       sanityClient.fetch(
         `*[_type == "header"]{  "image": image.asset-> {
             _id,
@@ -27,7 +27,7 @@ function Header() {
   }, []);
 
   return (
-    <section className="Header">
+    <section className="relative">
       <div className=" mx-auto">
         <div className="banner flex justify-center">
           {bannerData && (

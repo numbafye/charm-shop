@@ -3,10 +3,12 @@ import MenuItems from "./MenuItems";
 import { Link as RouterLink } from "react-router-dom";
 import CartIcon from "./CartIcon";
 import useOutsideClick from "../hook/useOutsideClick";
+import sanityClient from "../../../charmecom/Client";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
+  const [banner, setBanner] = useState([]);
 
   // Close the menu when clicking outside
   useOutsideClick(menuRef, () => {
@@ -22,6 +24,20 @@ function Navbar() {
   };
 
   useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "banner"] {
+          "image": image.asset-> {
+            _id,
+            url
+          },
+        }[0]`
+      )
+      .then((data) => setBanner(data))
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
     // Updating the body style based on the menuOpen state
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
   }, [menuOpen]);
@@ -29,8 +45,11 @@ function Navbar() {
   return (
     <>
       <div
-        className={`navbar-container px-1.5 flex z-50 sticky top-0 h-20 pt-2 w-full md:px-7`}
+        className={`navbar-container px-1.5 flex z-30 sticky top-0 h-20 pt-2 w-full md:px-7`}
       >
+        {banner.image && (
+          <img className="navbar-banner" src={banner.image.url} alt="Banner" />
+        )}
         <div className="hamburger-container">
           <button
             className={`hamburger-icon ${menuOpen ? "open" : ""}`}
