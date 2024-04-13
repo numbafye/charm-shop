@@ -32,7 +32,7 @@ function Header() {
         <div className="banner flex justify-center">
           {bannerData && (
             <img
-              className="w-full h-96 rounded-sm"
+              className="w-full h-96 rounded-sm rotate-180"
               src={bannerData.image.url}
               alt="Banner"
             />

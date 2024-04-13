@@ -1,6 +1,24 @@
 import { Link as RouterLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import sanityClient from "../../../charmecom/Client";
 
 function Footer() {
+  const [banner, setBanner] = useState([]);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "banner"] {
+        "image": image.asset-> {
+          _id,
+          url
+        },
+      }[0]`
+      )
+      .then((data) => setBanner(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <>
       <hr />
