@@ -30,10 +30,12 @@ function Home() {
       <Navbar />
       <Header />
       <ProductPreview />
-      <Element name="about" id="about">
-        <section className="p-7 rounded-sm">
-          <h2 className="text-center">About</h2>
-          <p className="text-sm">
+
+      <Element name="about" id="about" className="text-center">
+        <section className="py-7 px-4 rounded-sm">
+          {/* ADD IMG */}
+          <h2 className="text-center text-3xl pb-2">Our Story</h2>
+          <p className="text-lg font-semibold leading-snug">
             {/* 150 */}
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis,
             laboriosam vero cupiditate exercitationem cum ut voluptas dolor,

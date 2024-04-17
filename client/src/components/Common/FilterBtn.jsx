@@ -115,7 +115,7 @@ function FilterBtn({ onApply }) {
   };
 
   return (
-    <div className="filter-sort-menu">
+    <div>
       <div className="w-full text-center">
         <button className="w-1/2 mt-4 border" onClick={toggleFilter}>
           Filter & Sort
@@ -253,9 +253,12 @@ function FilterBtn({ onApply }) {
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-            <button className="relative top-8 left-12 text-left" onClick={clearFilters}>
-              Clear All
-            </button>
+          <button
+            className="relative top-8 left-12 text-left xsm:left-5 md:left-40"
+            onClick={clearFilters}
+          >
+            Clear All
+          </button>
           <div className="text-center  bg-text">
             <button className="p-1 border h-10" onClick={applyFilters}>
               Apply Filters

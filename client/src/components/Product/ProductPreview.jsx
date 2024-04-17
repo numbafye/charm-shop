@@ -26,7 +26,7 @@ function ProductPreview() {
 
   return (
     <>
-      <div className="text-center mt-4 text-btn font-bold text-4xl">
+      <div className="text-center my-14 text-btn font-bold text-4xl">
         NEW ARRIVALS
       </div>
       <div className="m-7">
