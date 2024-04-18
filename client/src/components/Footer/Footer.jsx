@@ -20,7 +20,7 @@ function Footer() {
   }, []);
 
   return (
-    <div className="mt-2">
+    <div className="footer">
       {banner.image && (
         <img
           className="footer-img h-56 md:h-72 xsm:h-80"

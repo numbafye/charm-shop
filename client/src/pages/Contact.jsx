@@ -6,11 +6,9 @@ function Contact() {
     <>
       <Navbar />
       {/* <div className="flex flex-row flex-nowrap"> */}
-      {/* <section className="m-10 p-6">
-          
-        </section> */}
+    
       <section
-        className="m-10 p-6 bg-blue-700 rounded-lg shadow-md"
+        className="m-10 p-6 bg-blue-700 rounded-lg shadow-md md:mt-56"
         id="contact"
       >
         <h2 className="text-center text-2xl font-bold mb-4">Contact Me</h2>
@@ -18,6 +16,7 @@ function Contact() {
           target="_blank"
           action="https://formsubmit.co/your@email.com"
           method="POST"
+          className=" md:h-72"
         >
           <div className="form-group mb-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
