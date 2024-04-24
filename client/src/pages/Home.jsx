@@ -1,6 +1,4 @@
-import Navbar from "../components/Common/Navbar";
 import Overlay from "../components/Common/Overlay";
-import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -27,7 +25,6 @@ function Home() {
   return (
     <>
       <Overlay />
-      <Navbar />
       <Header />
       <ProductPreview />
 
@@ -58,7 +55,6 @@ function Home() {
           </p>
         </section>
       </Element>
-      <Footer />
     </>
   );
 }

@@ -3,8 +3,6 @@ import sanityClient from "../../../charmecom/Client";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../CartContext";
 import Carousel from "../../components/Common/Carousel";
-import Foot from "../Footer/Footer";
-import Navbar from "../../components/Common/Navbar";
 import AlwaysOpenExample from "./ProductAccordion";
 
 function ProductDetail() {
@@ -41,7 +39,6 @@ function ProductDetail() {
 
   return (
     <>
-      <Navbar />
       <div className="text-center">
         <img
           src={product.image.url}
@@ -74,7 +71,6 @@ function ProductDetail() {
         <AlwaysOpenExample product={product} />
       </div>
       <Carousel />
-      <Foot />
     </>
   );
 }

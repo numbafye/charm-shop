@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import sanityClient from "../../charmecom/Client";
-import Navbar from "../components/Common/Navbar";
 import ProductCard from "../components/Product/ProductCard";
-import Footer from "../components/Footer/Footer";
 import FilterBtn from "../components/Common/FilterBtn";
 
 function ProductList() {
@@ -65,7 +63,7 @@ function ProductList() {
 
   return (
     <div>
-      <Navbar />
+ 
       <h1 className="text-center mt-5 text-btn font-bold text-4xl">
         BROWSE CATALOG
       </h1>
@@ -86,7 +84,6 @@ function ProductList() {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 }
