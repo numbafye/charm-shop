@@ -3,11 +3,11 @@ import Footer from "../Footer/Footer";
 
 const Layout = ({ children }) => {
     return (
-        <div>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-        </div>
+        <div className="App">
+        <Navbar />
+        <main style={{ flex: 1 }}>{children}</main>
+        <Footer className="footer-container" />
+    </div>
     );
 };
 
