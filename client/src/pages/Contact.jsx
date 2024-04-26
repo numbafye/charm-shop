@@ -1,7 +1,7 @@
 function Contact() {
   return (
     <section
-      className="m-10 p-6 bg-blue-700 rounded-lg shadow-md md:mt-56"
+      className="m-16 p-6 bg-blue-700 rounded-lg shadow-md md:mt-24"
       id="contact"
     >
       <h2 className="text-center text-2xl font-bold mb-4">Contact Me</h2>

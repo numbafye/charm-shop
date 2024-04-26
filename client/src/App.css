@@ -32,6 +32,11 @@ body {
   font-size: 16px;
 }
 
+.body-no-scroll {
+  overflow: hidden !important;
+}
+
+
 input {
   display: block;
   font: inherit;
@@ -185,7 +190,7 @@ input {
 .hamburger-icon .bar {
   display: block;
   height: 3px;
-  background-color: pink;
+  background-color: black;
   margin: 5px auto;
   transition: transform 0.3s ease;
   animation: Opa 0.3s ease;
@@ -231,6 +236,7 @@ input {
   animation: slideFromRight 0.5s ease-in-out;
   border-left: 0.5px solid #ff9999;
   overflow-y: scroll;
+  border-radius: 0.2em;
 }
 
 @media (min-width: 1025px) {
@@ -287,13 +293,15 @@ input {
   object-fit: cover;
 }
 
+.footer {
+  z-index: 0;
+}
+
 .footer-img {
   width: 100%;
-  border: 1px black solid;
   position: absolute;
   overflow: hidden;
   left: 0;
-  z-index: 0;
   /* object-fit: cover; */
 }
 

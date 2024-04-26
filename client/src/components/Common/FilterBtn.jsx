@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Accordion from "react-bootstrap/Accordion";
 
 function FilterBtn({ onApply }) {
@@ -109,10 +109,26 @@ function FilterBtn({ onApply }) {
       [name]: prevFilters[name] === value ? "" : value,
     }));
   };
-
+  
   const toggleFilter = () => {
+    console.log("Toggling Filter");
     setFilterOpen(!filterOpen);
   };
+  
+  useEffect(() => {
+    console.log("Filter open state changed:", filterOpen);
+    if (filterOpen) {
+      document.body.classList.add("body-no-scroll");
+    } else {
+      document.body.classList.remove("body-no-scroll");
+    }
+  
+    // Cleanup function
+    return () => {
+      document.body.classList.remove("body-no-scroll");
+    };
+  }, [filterOpen]);
+  
 
   return (
     <div>

@@ -62,7 +62,7 @@ function ProductList() {
   //FUNCTION FOR FILTER BTN TO OPEN FILTER COMPONENT (SLIDE OUT LIKE CART MENU)
 
   return (
-    <div>
+    <div className="product-list">
  
       <h1 className="text-center mt-5 text-btn font-bold text-4xl">
         BROWSE CATALOG
