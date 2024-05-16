@@ -34,7 +34,7 @@ function Home() {
           <h2 className="text-center text-3xl pb-2">Our Story</h2>
           <p className="text-lg font-semibold leading-snug">
             {/* 150 */}
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis,
+            Lorem ipsum. dolor sit amet consectetur adipisicing elit. Corporis,
             laboriosam vero cupiditate exercitationem cum ut voluptas dolor,
             blanditiis commodi perferendis vel explicabo, perspiciatis eligendi
             molestias ex tempora nobis voluptatum incidunt ad asperiores!
